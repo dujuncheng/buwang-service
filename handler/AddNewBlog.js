@@ -41,7 +41,7 @@ class AddNewBlog extends BaseClass{
         } else {
             ctx.body = {
                 success: false,
-                message: 'addNewBlog失败啦'
+                message: 'addNewBlog失败啦1'
             }
             return next();
         }
