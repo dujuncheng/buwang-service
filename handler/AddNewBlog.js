@@ -49,6 +49,5 @@ class AddNewBlog extends BaseClass{
     }
 }
 
-
 module.exports = AddNewBlog;
 
