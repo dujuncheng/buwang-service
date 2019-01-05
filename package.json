@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "js-base64": "^2.4.9",
+    "koa": "^2.5.3",
+    "koa-body": "^4.0.4",
+    "koa-router": "^7.4.0",
+    "koa2-cors": "^2.0.6",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.4",
+    "sqlstring": "^2.3.1",
+    "underscore": "^1.9.1",
+    "xss": "^1.0.3"
+  }
+}
