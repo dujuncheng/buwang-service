@@ -9,7 +9,7 @@ const CancelReviewThis          = require("../handler/CancelReviewThis.js");
 
 const route = async (ctx, next) => {
     let method = ctx.request.query.method || ctx.request.body.method;
-    if (method === 'addNewBlog') {
+    if (method === 'addNewNote') {
         return await (new AddNewBlog()).handler(ctx, next);
     } else if (method === 'changeOldBlog') {
         return await (new ChangeOldBlog()).handler(ctx, next);

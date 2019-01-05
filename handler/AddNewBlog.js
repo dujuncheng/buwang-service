@@ -12,7 +12,6 @@ class AddNewBlog extends BaseClass{
     }
     async run(ctx, next) {
         // 检查params
-        console.log('add new Blog');
         let paramsOk = this.checkParams(['fileName', 'filePath', 'birthTime']);
         if (!paramsOk) {
             return next();

@@ -16,7 +16,7 @@ async function serverinit () {
     app.use(bodyParser());
     app.use(cors());
     var router = new Router();
-    router.all('/learn_review', route);
+    router.all('/notebook', route);
 
     app.use(router.routes()).use(router.allowedMethods());
 

@@ -9,7 +9,7 @@ let init = async () => {
             host: 'localhost',
             user: 'root',
             password: 'haohaoxuexi1234',
-            database: 'learn',
+            database: 'notebook',
             charset: 'UTF8MB4_GENERAL_CI',
         });
 
