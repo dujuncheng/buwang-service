@@ -161,20 +161,20 @@ class CatalogModel {
 
 
     /**
-     * 更新blog的状态
-     * @param path
+     * 更新catalog的状态
+     * @param catalog_id
      * @param state
      * @returns {Promise<*>}
      */
-    async updateBlogState(path, state) {
-        if(_.isUndefined(path) || _.isUndefined(state)) {
+    async updateCatalogState(catalog_id, state) {
+        if(_.isUndefined(catalog_id) || _.isUndefined(state)) {
             return false;
         }
         let sql = `UPDATE catalog_table
                 SET
                 state = '${state}',
                 gmt_modify = '${new Date().getTime() / 1000}'
-                WHERE file_path = '${path}'`;
+                WHERE catalog_id = '${catalog_id}'`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
@@ -185,9 +185,9 @@ class CatalogModel {
 
     /**
      * 更新catalog的目录
-     * @param name
-     * @param path
-     * @param birth_time
+     * @param catalog_id
+     * @param user_id
+     * @param parent_id
      * @returns {Promise<*>}
      */
     async moveCatalog(catalog_id, user_id, parent_id) {
