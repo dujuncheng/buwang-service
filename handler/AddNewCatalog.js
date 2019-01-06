@@ -12,19 +12,19 @@ class AddNewCatalog extends BaseClass{
     async run(ctx, next) {
         try {
             // 检查params
-            let paramsOk = this.checkParams(['self_id', 'parent_id', 'name']);
+            let paramsOk = this.checkParams(['catalog_id', 'parent_id', 'name']);
             if (!paramsOk) {
                 return next();
             }
             if (
-                typeof this.param.self_id !== 'number' ||
+                typeof this.param.catalog_id !== 'number' ||
                 typeof this.param.parent_id !== 'number' ||
                 typeof this.param.name !== 'string'
             ) {
                 throw new Error('参数格式不正确')
                 return;
             }
-            this.selfId = Number(this.param.self_id);
+            this.selfId = Number(this.param.catalog_id);
             this.parentId = Number(this.param.parent_id);
             this.name = String(this.param.name);
 
@@ -33,7 +33,7 @@ class AddNewCatalog extends BaseClass{
                 return next();
             }
 
-            let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.self_id);
+            let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id);
             if (catalogArr.length > 0) {
                 this.responseFail('数据库中已经有该数据的记录了', errCode.ADD_BUT_ALREADY_HAVE);
                 return next();
