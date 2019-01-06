@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbefac63-d3fa-46e7-8b8f-e0f92a006441" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/handler/MoveCatalog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/RemoveCatalog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/RenameCatalog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/errCode.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/errCode.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/catalogModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/catalogModel.js" afterDir="false" />
@@ -30,57 +31,39 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="js" value="22" />
+          <entry key="js" value="24" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="22" />
+          <entry key="JavaScript" value="24" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="14" />
-          <entry key="js" value="2904" />
-          <entry key="txt" value="43" />
+          <entry key="js" value="3206" />
+          <entry key="txt" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="2904" />
-          <entry key="PLAIN_TEXT" value="57" />
+          <entry key="JavaScript" value="3206" />
+          <entry key="PLAIN_TEXT" value="117" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/catalogModel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="199" column="77" selection-start-line="199" selection-start-column="77" selection-end-line="199" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/reviewModel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="99" column="41" lean-forward="true" selection-start-line="99" selection-start-column="41" selection-end-line="99" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/mysql.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+            <state relative-caret-position="1121">
+              <caret line="144" column="23" selection-start-line="144" selection-start-column="10" selection-end-line="144" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -115,17 +98,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handler/MoveCatalog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="50" column="57" selection-start-line="50" selection-start-column="57" selection-end-line="50" selection-end-column="57" />
+            <state relative-caret-position="275">
+              <caret line="50" column="61" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/errCode.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/handler/RenameCatalog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+            <state relative-caret-position="430">
+              <caret line="29" column="59" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -142,8 +125,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/route/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="35" column="31" lean-forward="true" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+            <state relative-caret-position="418">
+              <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/RemoveCatalog.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1198">
+              <caret line="68" column="30" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -160,11 +152,16 @@
       <find>bindQuery</find>
       <find>param</find>
       <find>makeCatalogTree</find>
-      <find>MoveCatalog</find>
       <find>UPDATE_CONTNET_FAIL</find>
-      <find>catalog_id</find>
       <find>parent_id</find>
       <find>moveCatalog</find>
+      <find>getArrByCatalogId</find>
+      <find>MoveCatalog</find>
+      <find>catalog_id</find>
+      <find>new_name</find>
+      <find>renameCatalog</find>
+      <find>rename_catalog</find>
+      <find>table</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -181,10 +178,12 @@
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/handler/AddNewCatalog.js" />
         <option value="$PROJECT_DIR$/handler/GetCatalog.js" />
-        <option value="$PROJECT_DIR$/route/index.js" />
-        <option value="$PROJECT_DIR$/config/errCode.js" />
         <option value="$PROJECT_DIR$/handler/MoveCatalog.js" />
+        <option value="$PROJECT_DIR$/route/index.js" />
+        <option value="$PROJECT_DIR$/handler/RemoveCatalog.js" />
+        <option value="$PROJECT_DIR$/config/errCode.js" />
         <option value="$PROJECT_DIR$/model/catalogModel.js" />
+        <option value="$PROJECT_DIR$/handler/RenameCatalog.js" />
       </list>
     </option>
   </component>
@@ -285,6 +284,11 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/handler" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -309,7 +313,7 @@
       <updated>1546703733599</updated>
       <workItem from="1546703734727" duration="2102000" />
       <workItem from="1546755834831" duration="621000" />
-      <workItem from="1546764690608" duration="8561000" />
+      <workItem from="1546764690608" duration="9561000" />
     </task>
     <task id="LOCAL-00001" summary="add code">
       <created>1546704081750</created>
@@ -339,16 +343,31 @@
       <option name="project" value="LOCAL" />
       <updated>1546774500619</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="增加，移动目录 的功能">
+      <created>1546775927314</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1546775927314</updated>
+    </task>
+    <task id="LOCAL-00006" summary="FIX BUG 修复了不是本人可以修改目录的bug">
+      <created>1546776171414</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1546776171414</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11284000" />
+    <option name="totallyTimeSpent" value="12284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17406625" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17406625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -360,9 +379,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.47542998" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.47542998" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.013513514" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -378,7 +397,9 @@
     <MESSAGE value="add code" />
     <MESSAGE value="增加，新增目录 的功能" />
     <MESSAGE value="增加，获取目录 的功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加，获取目录 的功能" />
+    <MESSAGE value="增加，移动目录 的功能" />
+    <MESSAGE value="FIX BUG 修复了不是本人可以修改目录的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIX BUG 修复了不是本人可以修改目录的bug" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -458,31 +479,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/route/index.js">
+    <entry file="file://$PROJECT_DIR$/handler/RemoveCatalog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="35" column="31" lean-forward="true" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/errCode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        <state relative-caret-position="1198">
+          <caret line="68" column="30" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/handler/MoveCatalog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="50" column="57" selection-start-line="50" selection-start-column="57" selection-end-line="50" selection-end-column="57" />
+        <state relative-caret-position="275">
+          <caret line="50" column="61" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/catalogModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="199" column="77" selection-start-line="199" selection-start-column="77" selection-end-line="199" selection-end-column="77" />
+        <state relative-caret-position="1121">
+          <caret line="144" column="23" selection-start-line="144" selection-start-column="10" selection-end-line="144" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/errCode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/RenameCatalog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="29" column="59" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
         </state>
       </provider>
     </entry>

@@ -2,6 +2,8 @@ const AddNewBlog                = require('../handler/AddNewBlog.js');
 const AddNewCatalog             = require('../handler/AddNewCatalog.js');
 const GetCatalog                = require('../handler/GetCatalog.js');
 const MoveCatalog               = require('../handler/MoveCatalog.js');
+const RemoveCatalog               = require('../handler/RemoveCatalog.js');
+const RenameCatalog               = require('../handler/RenameCatalog.js');
 const ChangeOldBlog             = require("../handler/ChangeOldBlog.js");
 const DeleteFile                = require("../handler/DeleteFile.js");
 const UpdateBlogNamePath        = require("../handler/UpdateBlogNamePath.js");
@@ -34,6 +36,10 @@ const route = async (ctx, next) => {
         return await (new GetCatalog()).handler(ctx, next);
     } else if (method === 'move_catalog') {
         return await (new MoveCatalog()).handler(ctx, next);
+    } else if (method === 'rename_catalog') {
+        return await (new RenameCatalog()).handler(ctx, next);
+    } else if (method === 'remove_catalog') {
+        return await (new RemoveCatalog()).handler(ctx, next);
     }
 }
 

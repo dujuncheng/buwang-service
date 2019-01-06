@@ -138,20 +138,19 @@ class CatalogModel {
 
     /**
      *
-     * @param birthTime
-     * @param content
+     * @param catalog_id
+     * @param new_name
      * @returns {Promise<*>}
      */
-    async updateBlogContent(birthTime, content) {
-        if(_.isUndefined(content) || _.isUndefined(birthTime)) {
+    async renameCatalog(catalog_id, new_name) {
+        if(_.isUndefined(catalog_id) || _.isUndefined(new_name)) {
             return false;
         }
-        let sql = `UPDATE review_table
+        let sql = `UPDATE catalog_table
                 SET
-                content = '${content}',
-                is_changed = '1',
+                name = '${new_name}',
                 gmt_modify = '${new Date().getTime() / 1000}'
-                WHERE birth_time = '${birthTime}'`;
+                WHERE catalog_id = '${catalog_id}'`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
@@ -159,6 +158,7 @@ class CatalogModel {
             });
         return res;
     }
+
 
     /**
      * 更新blog的状态
@@ -170,7 +170,7 @@ class CatalogModel {
         if(_.isUndefined(path) || _.isUndefined(state)) {
             return false;
         }
-        let sql = `UPDATE review_table
+        let sql = `UPDATE catalog_table
                 SET
                 state = '${state}',
                 gmt_modify = '${new Date().getTime() / 1000}'
@@ -225,41 +225,7 @@ class CatalogModel {
 
         return result;
     }
-    /**
-     * 根据birthTime来查找数据
-     * @param birthTime
-     * @returns {Promise<T>}
-     */
-    async getBlogArrByBirthTime(birthTime) {
-        if (_.isUndefined(birthTime)) {
-            throw new Error('读取数据库参数缺失');
-        }
-        let sql = `SELECT * FROM review_table WHERE birth_time = ${birthTime}`;
 
-        let res = await mysql.runSql(sql, dbConf.dbName)
-            .catch((err) => {
-                console.log(err);
-            });
-        return res;
-    }
-
-    /**
-     * 根据path来查找数据
-     * @param birthTime
-     * @returns {Promise<T>}
-     */
-    async getBlogArrByFilePath(path) {
-        if (_.isUndefined(path)) {
-            throw new Error('读取数据库参数缺失');
-        }
-        let sql = `SELECT * FROM review_table WHERE file_path = '${path}'`;
-
-        let res = await mysql.runSql(sql, dbConf.dbName)
-            .catch((err) => {
-                console.log(err);
-            });
-        return res;
-    }
 
     async updateBlogReviewNotice(birthTime, nextNotifyTime, reviewNum) {
         if(_.isUndefined(birthTime) || _.isUndefined(nextNotifyTime) || _.isUndefined(reviewNum)) {
