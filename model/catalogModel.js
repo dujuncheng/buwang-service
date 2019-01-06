@@ -23,11 +23,11 @@ class CatalogModel {
     constructor() {}
 
     static instance() {
-        const clazz = 'ReviewModel';
-        if (!ReviewModel.instances[clazz]) {
-            ReviewModel.instances[clazz] = new this();
+        const clazz = 'CatalogModel';
+        if (!CatalogModel.instances[clazz]) {
+            CatalogModel.instances[clazz] = new this();
         }
-        return ReviewModel.instances[clazz];
+        return CatalogModel.instances[clazz];
 
     }
 
@@ -46,10 +46,10 @@ class CatalogModel {
 
     /**
      *  增加一条目录的信息
-     * @param fileName
-     * @param filePath
-     * @param notifyTime
-     * @param content
+     * @param catalog_id
+     * @param user_id
+     * @param parent_id
+     * @param name
      * @returns {Promise<T>}
      */
     async addNewCatalog(
@@ -67,34 +67,47 @@ class CatalogModel {
             throw new Error('写入数据库参数缺失');
         }
 
-        let fieldStr = dbConf.reviewTableField.join(',');
+        let fieldStr = dbConf.catalogTableField.join(',');
 
         let valueArr = [];
-        // birth_time 文档的诞生时间，该值作为区分文件的唯一值
-        valueArr.push(birthTime || 0);
-        // name 文档的名称
-        valueArr.push(fileName || '无名称');
-        // file_path 文档的地址
-        valueArr.push(filePath || '无路径');
-        // notify_time 下次通知的时间
-        valueArr.push(nextNotifyTime);
-        // has_review  已经复习的次数
+        // id 自增的id
         valueArr.push(0);
-        // is_changed 是否是被需改的
-        valueArr.push(0);
-        // content 文档内容
-        valueArr.push(fileContent || '');
-        // state 文档状态
+        // catalog_id 目录的id
+        valueArr.push(catalog_id);
+        // user_id
+        valueArr.push(user_id);
+        // parent_id 父目录的id
+        valueArr.push(parent_id);
+        // name 目录名称
+        valueArr.push(name);
+        // state 目录是否还在
         valueArr.push(1);
         // gmt_create 创建的时间
         valueArr.push(Date.now() / 1000);
         // gmt_modify 修改的时间
         valueArr.push(Date.now() / 1000);
 
-
-        const sql = `INSERT INTO review_table (${fieldStr}) VALUES (?,?,?,?,?,?,?,?,?,?)`;
+        const sql = `INSERT INTO catalog_table (${fieldStr}) VALUES (?,?,?,?,?,?,?,?)`;
+        console.log(sql)
+        console.log(valueArr)
+        console.log(dbConf.dbName)
         let result = await mysql.bindSql(sql, valueArr, dbConf.dbName);
         return result;
+    }
+
+    async getArrByCatalogId(
+        catalog_id
+    ) {
+        if (catalog_id === undefined) {
+            return false;
+        }
+        let sql = `SELECT * FROM catalog_table WHERE catalog_id = ${catalog_id}`;
+
+        let res = await mysql.runSql(sql, dbConf.dbName)
+            .catch((err) => {
+                console.log(err);
+            });
+        return res;
     }
 
 

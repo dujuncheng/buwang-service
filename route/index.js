@@ -26,7 +26,7 @@ const route = async (ctx, next) => {
         return await (new FetchAllBlogArr()).handler(ctx, next);
     } else if (method === 'cancelReviewThis') {
         return await (new CancelReviewThis()).handler(ctx, next);
-    } else if (method === 'AddNewCatalog') {
+    } else if (method === 'add_catalog') {
         return await (new AddNewCatalog()).handler(ctx, next);
     }
 }

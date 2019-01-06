@@ -1,4 +1,5 @@
 const ReviewModel = require('../model/reviewModel.js');
+const CatalogModel = require('../model/catalogModel.js');
 const errCode = require("../config/errCode");
 const _         = require('underscore');
 
@@ -8,6 +9,7 @@ class BaseClass {
         this.ctx = '';
         this.param = {};
         this.ReviewModel = ReviewModel.instance();
+        this.CatalogModel = CatalogModel.instance();
     }
     async handler(ctx, next) {
         this.ctx = ctx;
