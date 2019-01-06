@@ -101,12 +101,13 @@ class CatalogModel {
      * @returns {Promise<T>}
      */
     async getArrByCatalogId(
-        catalog_id
+        catalog_id,
+        user_id
     ) {
         if (catalog_id === undefined) {
             return false;
         }
-        let sql = `SELECT * FROM catalog_table WHERE catalog_id = ${catalog_id} AND state = 1`;
+        let sql = `SELECT * FROM catalog_table WHERE catalog_id = ${catalog_id} AND state = 1 AND user_id = ${user_id}`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
