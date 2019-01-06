@@ -6,16 +6,17 @@ const errCode           = require('../config/errCode.js');
 const BaseClass = require('./baseClass.js');
 
 
-class AddNewBlog extends BaseClass{
+class AddNewCatalog extends BaseClass{
     constructor() {
         super();
     }
     async run(ctx, next) {
         // 检查params
-        let paramsOk = this.checkParams(['fileName', 'filePath', 'birthTime']);
+        let paramsOk = this.checkParams(['self_id', 'parent_id', 'name']);
         if (!paramsOk) {
             return next();
         }
+
 
         let blogArr = this.ReviewModel.getBlogArrByBirthTime(this.birthTime);
         if (blogArr.length > 0) {
@@ -38,7 +39,7 @@ class AddNewBlog extends BaseClass{
             }
             return next();
         } else {
-            
+
             ctx.body = {
                 success: false,
                 message: 'addNewBlog失败啦1'
@@ -50,5 +51,5 @@ class AddNewBlog extends BaseClass{
 }
 
 
-module.exports = AddNewBlog;
+module.exports = AddNewCatalog;
 

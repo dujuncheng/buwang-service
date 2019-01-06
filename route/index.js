@@ -1,4 +1,5 @@
 const AddNewBlog                = require('../handler/AddNewBlog.js');
+const AddNewCatalog             = require('../handler/AddNewCatalog.js');
 const ChangeOldBlog             = require("../handler/ChangeOldBlog.js");
 const DeleteFile                = require("../handler/DeleteFile.js");
 const UpdateBlogNamePath        = require("../handler/UpdateBlogNamePath.js");
@@ -25,6 +26,8 @@ const route = async (ctx, next) => {
         return await (new FetchAllBlogArr()).handler(ctx, next);
     } else if (method === 'cancelReviewThis') {
         return await (new CancelReviewThis()).handler(ctx, next);
+    } else if (method === 'AddNewCatalog') {
+        return await (new AddNewCatalog()).handler(ctx, next);
     }
 }
 
