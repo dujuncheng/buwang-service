@@ -1,4 +1,4 @@
-const ReviewModel = require('../model/reviewModel.js');
+const NoteModel = require('../model/NoteModel.js');
 const CatalogModel = require('../model/catalogModel.js');
 const errCode = require("../config/errCode");
 const _         = require('underscore');
@@ -8,7 +8,7 @@ class BaseClass {
     constructor() {
         this.ctx = '';
         this.param = {};
-        this.ReviewModel = ReviewModel.instance();
+        this.NoteModel = NoteModel.instance();
         this.CatalogModel = CatalogModel.instance();
     }
     async handler(ctx, next) {

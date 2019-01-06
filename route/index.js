@@ -1,4 +1,4 @@
-const AddNewBlog                = require('../handler/AddNewBlog.js');
+const addNewNote                = require('../handler/addNewNote.js');
 const AddNewCatalog             = require('../handler/AddNewCatalog.js');
 const GetCatalog                = require('../handler/GetCatalog.js');
 const MoveCatalog               = require('../handler/MoveCatalog.js');
@@ -14,8 +14,8 @@ const CancelReviewThis          = require("../handler/CancelReviewThis.js");
 
 const route = async (ctx, next) => {
     let method = ctx.request.query.method || ctx.request.body.method;
-    if (method === 'addNewNote') {
-        return await (new AddNewBlog()).handler(ctx, next);
+    if (method === 'add_note') {
+        return await (new addNewNote()).handler(ctx, next);
     } else if (method === 'changeOldBlog') {
         return await (new ChangeOldBlog()).handler(ctx, next);
     } else if (method === 'deleteFile') {
