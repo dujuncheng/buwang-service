@@ -95,13 +95,18 @@ class CatalogModel {
         return result;
     }
 
+    /**
+     *  根据catalog_id找到所有记录
+     * @param catalog_id
+     * @returns {Promise<T>}
+     */
     async getArrByCatalogId(
         catalog_id
     ) {
         if (catalog_id === undefined) {
             return false;
         }
-        let sql = `SELECT * FROM catalog_table WHERE catalog_id = ${catalog_id}`;
+        let sql = `SELECT * FROM catalog_table WHERE catalog_id = ${catalog_id} AND state = 1`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
@@ -110,6 +115,25 @@ class CatalogModel {
         return res;
     }
 
+    /**
+     *  根据user_id找到所有记录
+     * @param user_id
+     * @returns {Promise<T>}
+     */
+    async getArrByUid(
+        user_id
+    ) {
+        if (user_id === undefined) {
+            return false;
+        }
+        let sql = `SELECT * FROM catalog_table WHERE user_id = ${user_id} AND state = 1`;
+
+        let res = await mysql.runSql(sql, dbConf.dbName)
+            .catch((err) => {
+                console.log(err);
+            });
+        return res;
+    }
 
     /**
      *
