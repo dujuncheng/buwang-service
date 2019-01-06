@@ -183,23 +183,21 @@ class CatalogModel {
     }
 
     /**
-     * 更新blog的name和path
+     * 更新catalog的目录
      * @param name
      * @param path
      * @param birth_time
      * @returns {Promise<*>}
      */
-    async updateNamePath(name, path, birth_time) {
-        if(_.isUndefined(path) || _.isUndefined(name) || _.isUndefined(birth_time)) {
+    async moveCatalog(catalog_id, user_id, parent_id) {
+        if(_.isUndefined(catalog_id) || _.isUndefined(user_id) || _.isUndefined(parent_id)) {
             return false;
         }
-        let sql = `UPDATE review_table
+        let sql = `UPDATE catalog_table
                 SET
-                name = '${name}',
-                file_path = '${path}',
-                state = 1,
+                parent_id = '${parent_id}',
                 gmt_modify = '${new Date().getTime() / 1000}'
-                WHERE birth_time = '${birth_time}'`;
+                WHERE user_id = '${user_id}' AND catalog_id = '${catalog_id}'`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {

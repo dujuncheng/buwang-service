@@ -10,6 +10,7 @@ const errCode = {
     WRONG_PATH: 106,
     UPDATE_STATE_FAIL: 107,
     ADD_BUT_ALREADY_HAVE: 108,
+    MOVE_CATALOG_FAIL: 109,
 }
 
 
