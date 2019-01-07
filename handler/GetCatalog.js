@@ -41,7 +41,6 @@ class GetCatalog extends BaseClass{
                 result.push(obj);
             }
         }
-
         for (let i = 0; i < result.length; i++) {
             result[i].children = await this.findChild(result[i].catalog_id, arr)
         }
@@ -49,8 +48,11 @@ class GetCatalog extends BaseClass{
     }
     async findChild(parent_id, arr) {
         let result = [];
+        if (arr.length <= 0) {
+            return result;
+        }
         for (let i = arr.length - 1; i >= 0; i--) {
-            if (parent_id === arr[i].parent_id) {
+            if (arr[i] && parent_id === arr[i].parent_id) {
                 let obj = arr.splice(i, 1)[0];
                 obj.label = obj.name;
                 obj.note_num = await this.getNoteNum(obj.catalog_id);
