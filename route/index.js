@@ -1,9 +1,10 @@
 const addNewNote                = require('../handler/addNewNote.js');
 const AddNewCatalog             = require('../handler/AddNewCatalog.js');
 const GetCatalog                = require('../handler/GetCatalog.js');
+const GetNoteList               = require('../handler/GetNoteList.js');
 const MoveCatalog               = require('../handler/MoveCatalog.js');
-const RemoveCatalog               = require('../handler/RemoveCatalog.js');
-const RenameCatalog               = require('../handler/RenameCatalog.js');
+const RemoveCatalog             = require('../handler/RemoveCatalog.js');
+const RenameCatalog             = require('../handler/RenameCatalog.js');
 const ChangeOldBlog             = require("../handler/ChangeOldBlog.js");
 const DeleteFile                = require("../handler/DeleteFile.js");
 const UpdateBlogNamePath        = require("../handler/UpdateBlogNamePath.js");
@@ -40,6 +41,8 @@ const route = async (ctx, next) => {
         return await (new RenameCatalog()).handler(ctx, next);
     } else if (method === 'remove_catalog') {
         return await (new RemoveCatalog()).handler(ctx, next);
+    } else if (method === 'get_note_list') {
+        return await (new GetNoteList()).handler(ctx, next);
     }
 }
 

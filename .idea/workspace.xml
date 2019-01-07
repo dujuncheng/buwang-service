@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbefac63-d3fa-46e7-8b8f-e0f92a006441" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/handler/GetNoteList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/AddNewBlog.js" beforeDir="false" afterPath="$PROJECT_DIR$/handler/AddNewNote.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/GetCatalog.js" beforeDir="false" afterPath="$PROJECT_DIR$/handler/GetCatalog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/baseClass.js" beforeDir="false" afterPath="$PROJECT_DIR$/handler/baseClass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/reviewModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/NoteModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/route/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/route/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,43 +19,52 @@
     <session id="-605948493">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.0" value="4" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.0" value="7" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="js" value="28" />
+          <entry key="js" value="35" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="28" />
+          <entry key="JavaScript" value="35" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="14" />
-          <entry key="js" value="4183" />
-          <entry key="txt" value="148" />
+          <entry key="js" value="4397" />
+          <entry key="txt" value="184" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="4183" />
-          <entry key="PLAIN_TEXT" value="162" />
+          <entry key="JavaScript" value="4397" />
+          <entry key="PLAIN_TEXT" value="198" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/GetCatalog.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="39" column="28" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/catalogModel.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -69,64 +75,26 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/baseClass.js">
+        <entry file="file://$PROJECT_DIR$/model/NoteModel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="20" column="19" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="19" />
+            <state relative-caret-position="288">
+              <caret line="196" column="47" selection-start-line="196" selection-start-column="40" selection-end-line="196" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/GetCatalog.js">
+        <entry file="file://$PROJECT_DIR$/handler/FetchBlogArr.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="719">
-              <caret line="54" column="51" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="51" />
-            </state>
+            <state relative-caret-position="-2" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/handler/AddNewNote.js">
+        <entry file="file://$PROJECT_DIR$/handler/GetNoteList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/NoteModel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="59" column="20" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/db.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/MoveCatalog.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="50" column="61" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/UpdateBlogNamePath.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="21" column="28" lean-forward="true" selection-end-line="43" />
+            <state relative-caret-position="331">
+              <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -134,26 +102,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/route/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            <state relative-caret-position="57">
+              <caret line="3" column="65" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="65" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/RemoveCatalog.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="29" column="78" selection-start-line="29" selection-start-column="78" selection-end-line="29" selection-end-column="78" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/handler/FetchAllBlogArr.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>CatalogModel</find>
       <find>gmt_create</find>
       <find>blogAr</find>
       <find>INSERT</find>
@@ -179,10 +142,11 @@
       <find>ReviewModel</find>
       <find>addNewBlog</find>
       <find>note_id</find>
-      <find>catalog_id</find>
-      <find>getArrByCatalogId</find>
       <find>review_table</find>
       <find>addNewNote</find>
+      <find>catalog_id</find>
+      <find>getArrByCatalogId</find>
+      <find>FetchNoteList</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -204,10 +168,11 @@
         <option value="$PROJECT_DIR$/model/catalogModel.js" />
         <option value="$PROJECT_DIR$/model/reviewModel.js" />
         <option value="$PROJECT_DIR$/handler/baseClass.js" />
-        <option value="$PROJECT_DIR$/handler/GetCatalog.js" />
-        <option value="$PROJECT_DIR$/route/index.js" />
         <option value="$PROJECT_DIR$/model/NoteModel.js" />
         <option value="$PROJECT_DIR$/handler/AddNewNote.js" />
+        <option value="$PROJECT_DIR$/handler/GetCatalog.js" />
+        <option value="$PROJECT_DIR$/handler/FetchNoteList.js" />
+        <option value="$PROJECT_DIR$/route/index.js" />
       </list>
     </option>
   </component>
@@ -264,6 +229,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -295,7 +261,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -339,7 +304,10 @@
       <workItem from="1546755834831" duration="621000" />
       <workItem from="1546764690608" duration="10082000" />
       <workItem from="1546778297330" duration="81000" />
-      <workItem from="1546778888067" duration="2388000" />
+      <workItem from="1546778888067" duration="2639000" />
+      <workItem from="1546782500858" duration="57000" />
+      <workItem from="1546782768546" duration="13000" />
+      <workItem from="1546827995035" duration="930000" />
     </task>
     <task id="LOCAL-00001" summary="add code">
       <created>1546704081750</created>
@@ -404,17 +372,30 @@
       <option name="project" value="LOCAL" />
       <updated>1546778345624</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="【增加功能点】新增一条笔记的功能">
+      <created>1546781379929</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1546781379929</updated>
+    </task>
+    <task id="LOCAL-00011" summary="【增加功能点】add label">
+      <created>1546828014249</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1546828014249</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15274000" />
+    <option name="totallyTimeSpent" value="16525000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17899929" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29386893" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -426,7 +407,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.47542998" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.47542998" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32923833" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -449,7 +430,9 @@
     <MESSAGE value="【增加功能点】修改目录名称" />
     <MESSAGE value="【增加功能点】删除目录" />
     <MESSAGE value="【fix bug】优化命名上的问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="【fix bug】优化命名上的问题" />
+    <MESSAGE value="【增加功能点】新增一条笔记的功能" />
+    <MESSAGE value="【增加功能点】add label" />
+    <option name="LAST_COMMIT_MESSAGE" value="【增加功能点】add label" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -501,9 +484,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/handler/baseClass.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/AddNewNote.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/handler/MoveCatalog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
+        <state relative-caret-position="712">
           <caret line="50" column="61" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="63" />
         </state>
       </provider>
@@ -522,18 +526,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/handler/FetchAllBlogArr.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/route/index.js">
+    <entry file="file://$PROJECT_DIR$/handler/FetchBlogArr.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
+        <state relative-caret-position="-2" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/catalogModel.js">
@@ -545,29 +543,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/NoteModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="59" column="20" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="20" />
+        <state relative-caret-position="288">
+          <caret line="196" column="47" selection-start-line="196" selection-start-column="40" selection-end-line="196" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/baseClass.js">
+    <entry file="file://$PROJECT_DIR$/route/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="19" />
+        <state relative-caret-position="57">
+          <caret line="3" column="65" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/handler/GetCatalog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="719">
-          <caret line="54" column="51" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="51" />
+        <state relative-caret-position="121">
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/AddNewNote.js">
+    <entry file="file://$PROJECT_DIR$/handler/GetNoteList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+        <state relative-caret-position="331">
+          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
         </state>
       </provider>
     </entry>
