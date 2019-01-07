@@ -23,11 +23,13 @@ class GetNoteList extends BaseClass{
                 return next();
             }
 
-            let blogArr = await this.NoteModel.getArrByCatalogId(this.param.catalog_id, 1);
-            if (blogArr) {
+            let noteList = await this.NoteModel.getArrByCatalogId(this.param.catalog_id, 1);
+            if (noteList) {
                 ctx.body = {
                     success: true,
-                    blogArr,
+                    data: {
+                        noteList,
+                    },
                 }
             }
         } catch (e) {
