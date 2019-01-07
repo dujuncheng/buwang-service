@@ -36,6 +36,7 @@ class GetCatalog extends BaseClass{
         for (let i = arr.length - 1; i >= 0; i--) {
             if (arr[i].parent_id === 0) {
                 let obj = arr.splice(i, 1)[0];
+                obj.label = obj.name;
                 obj.note_num = await this.getNoteNum(obj.catalog_id);
                 result.push(obj);
             }
@@ -51,6 +52,7 @@ class GetCatalog extends BaseClass{
         for (let i = arr.length - 1; i >= 0; i--) {
             if (parent_id === arr[i].parent_id) {
                 let obj = arr.splice(i, 1)[0];
+                obj.label = obj.name;
                 obj.note_num = await this.getNoteNum(obj.catalog_id);
                 obj.children = await this.findChild(obj.catalog_id, arr)
                 result.push(obj);
