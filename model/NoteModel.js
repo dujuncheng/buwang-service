@@ -130,20 +130,20 @@ class NoteModel {
     }
 
     /**
-     * 更新blog的状态
-     * @param path
+     * 更新note的状态
+     * @param note_id
      * @param state
      * @returns {Promise<*>}
      */
-    async updateBlogState(path, state) {
-        if(_.isUndefined(path) || _.isUndefined(state)) {
+    async updateNoteState(note_id, state) {
+        if(_.isUndefined(note_id) || _.isUndefined(state)) {
             return false;
         }
         let sql = `UPDATE note_table
                 SET
                 state = '${state}',
                 gmt_modify = '${new Date().getTime() / 1000}'
-                WHERE file_path = '${path}'`;
+                WHERE note_id = '${note_id}'`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
@@ -204,7 +204,7 @@ class NoteModel {
         user_id = ${user_id}
         AND
         state = 1
-        ORDER BY gmt_modify DESC
+        ORDER BY id DESC
         `;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
@@ -223,7 +223,7 @@ class NoteModel {
         if (_.isUndefined(note_id)) {
             throw new Error('读取数据库参数缺失');
         }
-        let sql = `SELECT * FROM note_table WHERE note_id = '${note_id}'`;
+        let sql = `SELECT * FROM note_table WHERE note_id = '${note_id}' AND state = 1`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
