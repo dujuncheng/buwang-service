@@ -204,7 +204,7 @@ class NoteModel {
         user_id = ${user_id}
         AND
         state = 1
-        ORDER BY gmt_modify
+        ORDER BY gmt_modify DESC
         `;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
