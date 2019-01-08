@@ -198,7 +198,14 @@ class NoteModel {
         if (_.isUndefined(catalog_id) || _.isUndefined(user_id)) {
             throw new Error('读取数据库参数缺失');
         }
-        let sql = `SELECT * FROM note_table WHERE catalog_id = '${catalog_id}' AND user_id = ${user_id}`;
+        let sql = `SELECT * FROM note_table WHERE 
+        catalog_id = '${catalog_id}' 
+        AND 
+        user_id = ${user_id}
+        AND
+        state = 1
+        ORDER BY gmt_modify
+        `;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
