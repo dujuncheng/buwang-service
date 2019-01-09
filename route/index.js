@@ -5,9 +5,8 @@ const GetNoteList               = require('../handler/GetNoteList.js');
 const MoveCatalog               = require('../handler/MoveCatalog.js');
 const RemoveCatalog             = require('../handler/RemoveCatalog.js');
 const RenameCatalog             = require('../handler/RenameCatalog.js');
-const ChangeOldBlog             = require("../handler/ChangeOldBlog.js");
+const ChangeNote                = require("../handler/ChangeNote.js");
 const DeleteNote                = require("../handler/DeleteNote.js");
-const UpdateBlogNamePath        = require("../handler/UpdateBlogNamePath.js");
 const FetchBlogArr              = require("../handler/FetchBlogArr.js");
 const HasReviewThis             = require("../handler/HasReviewThis.js");
 const FetchAllBlogArr           = require("../handler/FetchAllBlogArr.js");
@@ -17,12 +16,12 @@ const route = async (ctx, next) => {
     let method = ctx.request.query.method || ctx.request.body.method;
     if (method === 'add_note') {
         return await (new addNewNote()).handler(ctx, next);
-    } else if (method === 'changeOldBlog') {
-        return await (new ChangeOldBlog()).handler(ctx, next);
+    } else if (method === 'get_note_list') {
+        return await (new GetNoteList()).handler(ctx, next);
+    } else if (method === 'change_note') {
+        return await (new ChangeNote()).handler(ctx, next);
     } else if (method === 'delete_note') {
         return await (new DeleteNote()).handler(ctx, next);
-    } else if (method === 'updateBlogNamePath') {
-        return await (new UpdateBlogNamePath()).handler(ctx, next);
     } else if (method === 'fetchBlogArr') {
         return await (new FetchBlogArr()).handler(ctx, next);
     } else if (method === 'hasReviewThis') {
@@ -41,8 +40,6 @@ const route = async (ctx, next) => {
         return await (new RenameCatalog()).handler(ctx, next);
     } else if (method === 'remove_catalog') {
         return await (new RemoveCatalog()).handler(ctx, next);
-    } else if (method === 'get_note_list') {
-        return await (new GetNoteList()).handler(ctx, next);
     }
 }
 

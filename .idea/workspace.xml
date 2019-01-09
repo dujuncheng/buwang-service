@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dbefac63-d3fa-46e7-8b8f-e0f92a006441" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/DeleteFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/handler/DeleteNote.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/NoteModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/NoteModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/ChangeOldBlog.js" beforeDir="false" afterPath="$PROJECT_DIR$/handler/ChangeNote.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/UpdateBlogNamePath.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/route/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/route/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,37 +20,37 @@
     <session id="-605948493">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
-          <entry key="project.open.time.0" value="14" />
+          <entry key="project.closed" value="14" />
+          <entry key="project.open.time.0" value="15" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.opened" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="js" value="42" />
+          <entry key="js" value="44" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="42" />
+          <entry key="JavaScript" value="44" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="14" />
-          <entry key="js" value="4821" />
-          <entry key="txt" value="271" />
+          <entry key="js" value="5052" />
+          <entry key="txt" value="286" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="4821" />
-          <entry key="PLAIN_TEXT" value="285" />
+          <entry key="JavaScript" value="5052" />
+          <entry key="PLAIN_TEXT" value="300" />
         </counts>
       </usages-collector>
     </session>
@@ -60,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/NoteModel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="221" column="35" lean-forward="true" selection-start-line="221" selection-start-column="35" selection-end-line="221" selection-end-column="35" />
+            <state relative-caret-position="4199">
+              <caret line="221" column="35" selection-start-line="221" selection-start-column="35" selection-end-line="221" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -69,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handler/GetNoteList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
+            <state relative-caret-position="475">
               <caret line="25" column="65" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="65" />
             </state>
           </provider>
@@ -78,16 +78,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/route/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+            <state relative-caret-position="60">
+              <caret line="7" column="64" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/handler/ChangeNote.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-29">
+              <caret line="40" column="48" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handler/DeleteNote.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
+            <state relative-caret-position="342">
               <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
             </state>
           </provider>
@@ -97,7 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>renameCatalog</find>
       <find>rename_catalog</find>
       <find>RemoveCatalog</find>
       <find>table</find>
@@ -127,6 +135,7 @@
       <find>DeleteNote</find>
       <find>DeleteFile</find>
       <find>getArrByNoteId</find>
+      <find>UpdateNote</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,9 +161,11 @@
         <option value="$PROJECT_DIR$/handler/GetNoteList.js" />
         <option value="$PROJECT_DIR$/handler/AddNewCatalog.js" />
         <option value="$PROJECT_DIR$/handler/GetCatalog.js" />
-        <option value="$PROJECT_DIR$/route/index.js" />
         <option value="$PROJECT_DIR$/model/NoteModel.js" />
         <option value="$PROJECT_DIR$/handler/DeleteNote.js" />
+        <option value="$PROJECT_DIR$/handler/UpdateNote.js" />
+        <option value="$PROJECT_DIR$/route/index.js" />
+        <option value="$PROJECT_DIR$/handler/ChangeNote.js" />
       </list>
     </option>
   </component>
@@ -211,7 +222,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,6 +253,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,7 +307,8 @@
       <workItem from="1546848919657" duration="870000" />
       <workItem from="1546852631828" duration="82000" />
       <workItem from="1546940944966" duration="312000" />
-      <workItem from="1546943623645" duration="596000" />
+      <workItem from="1546943623645" duration="649000" />
+      <workItem from="1546949988787" duration="822000" />
     </task>
     <task id="LOCAL-00001" summary="add code">
       <created>1546704081750</created>
@@ -410,15 +422,21 @@
       <option name="project" value="LOCAL" />
       <updated>1546941247873</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="【fix bugs】增加删除笔记的功能">
+      <created>1546944244624</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1546944244624</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18940000" />
+    <option name="totallyTimeSpent" value="19815000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29386893" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -434,7 +452,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32923833" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.09090909" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.006142506" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -461,7 +479,8 @@
     <MESSAGE value="【fix bugs】获取note_list返回的json层级关系改变" />
     <MESSAGE value="【fix bugs】" />
     <MESSAGE value="【fix bugs】优化笔记列表的排序" />
-    <option name="LAST_COMMIT_MESSAGE" value="【fix bugs】优化笔记列表的排序" />
+    <MESSAGE value="【fix bugs】增加删除笔记的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="【fix bugs】增加删除笔记的功能" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -534,13 +553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/UpdateBlogNamePath.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="28" lean-forward="true" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handler/RemoveCatalog.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -575,31 +587,45 @@
     <entry file="file://$PROJECT_DIR$/handler/FetchAllBlogArr.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/GetNoteList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="25" column="65" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/route/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/NoteModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="221" column="35" lean-forward="true" selection-start-line="221" selection-start-column="35" selection-end-line="221" selection-end-column="35" />
+        <state relative-caret-position="4199">
+          <caret line="221" column="35" selection-start-line="221" selection-start-column="35" selection-end-line="221" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/GetNoteList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="65" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/handler/DeleteNote.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
+        <state relative-caret-position="342">
           <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/UpdateNote.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="64" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/ChangeNote.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29">
+          <caret line="40" column="48" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
         </state>
       </provider>
     </entry>
