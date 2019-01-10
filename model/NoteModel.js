@@ -111,16 +111,34 @@ class NoteModel {
      * @param content
      * @returns {Promise<*>}
      */
-    async updateNoteContent(noteId, content, title) {
-        if(_.isUndefined(noteId)) {
+    async updateNoteContent(noteIds, obj) {
+        if(_.isUndefined(noteIds)) {
             return false;
         }
-        let sql = `UPDATE note_table
-                SET
-                content = '${content}',
-                title = '${title}',
-                gmt_modify = '${new Date().getTime() / 1000}'
-                WHERE note_id = '${noteId}'`;
+        let ids = `(${noteIds.join(',')})`
+
+        let contentStr = ''
+        let keyArr = Object.keys(obj)
+        for (let i = 0; i < keyArr.length; i++) {
+            let str = ` WHEN ${keyArr[i]} THEN '${obj[keyArr[i]].content}'`
+            contentStr = contentStr + str
+        }
+
+        let titleStr = ''
+        for (let i = 0; i < keyArr.length; i++) {
+            let str = ` WHEN ${keyArr[i]} THEN '${obj[keyArr[i]].title}'`
+            titleStr = titleStr + str
+        }
+
+        let sql =  `UPDATE note_table 
+            SET content = CASE note_id 
+                ${contentStr}
+            END, 
+            title = CASE note_id 
+                ${titleStr}
+            END,
+            gmt_modify = '${new Date().getTime() / 1000}'
+        WHERE note_id IN ${ids}`
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
@@ -207,6 +225,25 @@ class NoteModel {
             throw new Error('读取数据库参数缺失');
         }
         let sql = `SELECT * FROM note_table WHERE note_id = '${note_id}' AND state = 1`;
+
+        let res = await mysql.runSql(sql, dbConf.dbName)
+            .catch((err) => {
+                console.log(err);
+            });
+        return res;
+    }
+
+    /**
+     * 根据note_ids 来查找数据
+     * @param birthTime
+     * @returns {Promise<T>}
+     */
+    async getArrByNoteIds(noteIds) {
+        if (_.isUndefined(noteIds)) {
+            throw new Error('读取数据库参数缺失');
+        }
+        let str = `(${noteIds.join(',')})`
+        let sql = `SELECT * FROM note_table WHERE note_id IN ${str} AND state = 1`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {

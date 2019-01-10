@@ -23,28 +23,38 @@ class ChangeNote extends BaseClass{
         }
     }
     async run(ctx, next) {
-
-        let paramOk = this.checkParams(['note_id'])
+        let paramOk = this.checkParams(['change_arr'])
         try {
             if (!paramOk) {
                 return next();
             }
 
-            if (typeof this.param.note_id !== 'number') {
+            if (!Array.isArray(this.param.change_arr)) {
                 throw new Error('参数格式不正确')
             }
 
-            let content = this.getRequestParam('content')
-            let title = this.getRequestParam('title')
+            let changeArr = this.param.change_arr;
+            let noteIds = [];
+            let obj = {}
 
-
-            // 判断该BLOG是否存在
-            let blogArr = await this.NoteModel.getArrByNoteId(this.param.note_id);
-            if (blogArr.length !== 1) {
-                throw new Error('数据库中note的数据不唯一或不存在');
+            for (let i = 0; i < changeArr.length; i++) {
+                let note_id = changeArr[i].note_id
+                noteIds.push(note_id)
+                obj[note_id] = {
+                    title: changeArr[i].title,
+                    content: changeArr[i].content,
+                }
             }
 
-            let updateRes = await this.NoteModel.updateNoteContent(this.param.note_id, content, title);
+            // 判断该BLOG是否存在
+            let arr = await this.NoteModel.getArrByNoteIds(noteIds);
+            if (arr.length !== noteIds.length ||
+                arr.length !== changeArr.length
+            ) {
+                throw new Error('您修改的内容中，有的在数据库中找不到');
+            }
+
+            let updateRes = await this.NoteModel.updateNoteContent(noteIds, obj);
             if (updateRes) {
                 ctx.body = {
                     success:true,

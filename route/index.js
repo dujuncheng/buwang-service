@@ -18,7 +18,7 @@ const route = async (ctx, next) => {
         return await (new addNewNote()).handler(ctx, next);
     } else if (method === 'get_note_list') {
         return await (new GetNoteList()).handler(ctx, next);
-    } else if (method === 'change_note') {
+    } else if (method === 'change_arr') {
         return await (new ChangeNote()).handler(ctx, next);
     } else if (method === 'delete_note') {
         return await (new DeleteNote()).handler(ctx, next);
