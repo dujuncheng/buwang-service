@@ -34,24 +34,17 @@ class ChangeNote extends BaseClass{
                 throw new Error('参数格式不正确')
             }
 
+            let content = this.getRequestParam('content')
+            let title = this.getRequestParam('title')
+
 
             // 判断该BLOG是否存在
-            let blogArr =  await this.ReviewModel.getBlogArrByBirthTime(this.param.birthTime);
-            if (blogArr.length === 0) {
-                throw new Error('数据库中没有该blog的信息');
-            }
-            // 判断该BLOG state 状态
-            if (blogArr[0].state === 0) {
-                this.responseFail('数据库中该blog的state为0', errCode.UPDATE_BUT_BLOG_STATE_0);
-                return next();
-            }
-            // 判断该BLOG的file_path name
-            if (blogArr[0].file_path !== this.param.filePath || blogArr[0].name !== this.param.fileName) {
-                this.responseFail('数据库中该blog name或者路径不对', errCode.UPDATE_BUT_WRONG_PATH);
-                return next();
+            let blogArr = await this.NoteModel.getArrByNoteId(this.param.note_id);
+            if (blogArr.length !== 1) {
+                throw new Error('数据库中note的数据不唯一或不存在');
             }
 
-            let updateRes = await this.ReviewModel.updateBlogContent(this.param.birthTime, this.param.fileContent);
+            let updateRes = await this.NoteModel.updateNoteContent(this.param.note_id, content, title);
             if (updateRes) {
                 ctx.body = {
                     success:true,

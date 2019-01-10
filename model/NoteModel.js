@@ -107,20 +107,20 @@ class NoteModel {
 
     /**
      *
-     * @param birthTime
+     * @param note_id
      * @param content
      * @returns {Promise<*>}
      */
-    async updateBlogContent(birthTime, content) {
-        if(_.isUndefined(content) || _.isUndefined(birthTime)) {
+    async updateNoteContent(noteId, content, title) {
+        if(_.isUndefined(noteId)) {
             return false;
         }
         let sql = `UPDATE note_table
                 SET
                 content = '${content}',
-                is_changed = '1',
+                title = '${title}',
                 gmt_modify = '${new Date().getTime() / 1000}'
-                WHERE birth_time = '${birthTime}'`;
+                WHERE note_id = '${noteId}'`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
@@ -171,23 +171,6 @@ class NoteModel {
         return result;
     }
 
-    /**
-     * 根据path来查找数据
-     * @param birthTime
-     * @returns {Promise<T>}
-     */
-    async getBlogArrByFilePath(path) {
-        if (_.isUndefined(path)) {
-            throw new Error('读取数据库参数缺失');
-        }
-        let sql = `SELECT * FROM note_table WHERE file_path = '${path}'`;
-
-        let res = await mysql.runSql(sql, dbConf.dbName)
-            .catch((err) => {
-                console.log(err);
-            });
-        return res;
-    }
 
     /**
      * 根据catalog_id 来查找数据
