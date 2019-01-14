@@ -7,7 +7,7 @@ class CancelReviewThis extends BaseClass{
     }
 
     async run(ctx, next) {
-        let paramOk = this.checkParams(['birthTime'])
+        let paramOk = this.checkParams(['note_id'])
 
         if (!paramOk) {
             return next();

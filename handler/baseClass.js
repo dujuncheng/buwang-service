@@ -71,38 +71,59 @@ class BaseClass {
      * @param reviewNum
      * @returns {number}
      */
-    getNextReviewTime(reviewNum) {
+    getNextReviewTime(reviewNum, frequency) {
+        if (!frequency) {
+            frequency = 3
+        }
+        let factor = 1
+        switch (frequency) {
+            case 1:
+                factor = 2;
+                break
+            case 2:
+                factor = 1.5;
+                break
+            case 3:
+                factor = 1;
+                break
+            case 4:
+                factor = 0.85;
+                break
+            case 5:
+                factor = 0.7
+                break
+        }
         let nextReviewSecond = 0;
         if (reviewNum === 0) {
-            nextReviewSecond = 30 * 60;
+            nextReviewSecond = 30 * 60 * factor;
         } else if (reviewNum === 1) {
-            nextReviewSecond = 12 * 60 * 60;
+            nextReviewSecond = 12 * 60 * 60 * factor;
         } else if (reviewNum === 2) {
-            nextReviewSecond = 24 * 60 * 60;
+            nextReviewSecond = 24 * 60 * 60 * factor;
         } else if (reviewNum === 3) {
-            nextReviewSecond = 2 * 24 * 60 * 60;
+            nextReviewSecond = 2 * 24 * 60 * 60 * factor;
         } else if (reviewNum === 4) {
-            nextReviewSecond = 4 * 24 * 60 * 60;
+            nextReviewSecond = 4 * 24 * 60 * 60 * factor;
         } else if (reviewNum === 5) {
-            nextReviewSecond = 7 * 24 * 60 * 60;
+            nextReviewSecond = 7 * 24 * 60 * 60 * factor;
         } else if (reviewNum === 6) {
-            nextReviewSecond = 15 * 24 * 60 * 60;
+            nextReviewSecond = 15 * 24 * 60 * 60 * factor;
         } else if (reviewNum === 7) {
-            nextReviewSecond = 30 * 24 * 60 * 60;
+            nextReviewSecond = 30 * 24 * 60 * 60 * factor;
         } else if (reviewNum === 8) {
-            nextReviewSecond = 50 * 24 * 60 * 60;
+            nextReviewSecond = 50 * 24 * 60 * 60 * factor;
         } else if (reviewNum === 8) {
-            nextReviewSecond = 80 * 24 * 60 * 60;
+            nextReviewSecond = 80 * 24 * 60 * 60 * factor;
         } else if (reviewNum === 9) {
-            nextReviewSecond = 140 * 24 * 60 * 60;
+            nextReviewSecond = 140 * 24 * 60 * 60 * factor;
         } else if (reviewNum === 10) {
-            nextReviewSecond = 200 * 24 * 60 * 60;
+            nextReviewSecond = 200 * 24 * 60 * 60 * factor;
         } else if (reviewNum === 10) {
-            nextReviewSecond = 300 * 24 * 60 * 60;
+            nextReviewSecond = 300 * 24 * 60 * 60 * factor;
         } else if (reviewNum === 10) {
-            nextReviewSecond = 400 * 24 * 60 * 60;
+            nextReviewSecond = 400 * 24 * 60 * 60 * factor;
         } else {
-            nextReviewSecond = 400 * 24 * 60 * 60;
+            nextReviewSecond = 400 * 24 * 60 * 60 * factor;
         }
 
         let now = Math.floor(Date.now() / 1000);
