@@ -270,7 +270,17 @@ class NoteModel {
         return res;
     }
 
-    async getAllBlogArr() {
+    // async getAllBlogArr() {
+    //     let sql = `SELECT * FROM note_table WHERE state = 1 ORDER BY notify_time`;
+    //
+    //     let res = await mysql.runSql(sql, dbConf.dbName)
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    //     return res;
+    // }
+
+    async getReviewList () {
         let sql = `SELECT * FROM note_table WHERE state = 1 ORDER BY notify_time`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)

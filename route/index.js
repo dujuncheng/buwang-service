@@ -7,7 +7,7 @@ const RemoveCatalog             = require('../handler/RemoveCatalog.js');
 const RenameCatalog             = require('../handler/RenameCatalog.js');
 const ChangeNote                = require("../handler/ChangeNote.js");
 const DeleteNote                = require("../handler/DeleteNote.js");
-const FetchBlogArr              = require("../handler/FetchBlogArr.js");
+const GetReviewList             = require("../handler/GetReviewList.js");
 const HasReviewThis             = require("../handler/HasReviewThis.js");
 const FetchAllBlogArr           = require("../handler/FetchAllBlogArr.js");
 const CancelReviewThis          = require("../handler/CancelReviewThis.js");
@@ -22,8 +22,8 @@ const route = async (ctx, next) => {
         return await (new ChangeNote()).handler(ctx, next);
     } else if (method === 'delete_note') {
         return await (new DeleteNote()).handler(ctx, next);
-    } else if (method === 'fetchBlogArr') {
-        return await (new FetchBlogArr()).handler(ctx, next);
+    } else if (method === 'get_review_list') {
+        return await (new GetReviewList()).handler(ctx, next);
     } else if (method === 'hasReviewThis') {
         return await (new HasReviewThis()).handler(ctx, next);
     } else if (method === 'fetchAllBlogArr') {
