@@ -252,16 +252,16 @@ class NoteModel {
         return res;
     }
 
-    async updateBlogReviewNotice(birthTime, nextNotifyTime, reviewNum) {
-        if(_.isUndefined(birthTime) || _.isUndefined(nextNotifyTime) || _.isUndefined(reviewNum)) {
+    async updateBlogReviewNotice(note_id, nextNotifyTime, reviewNum) {
+        if(_.isUndefined(note_id) || _.isUndefined(nextNotifyTime) || _.isUndefined(reviewNum)) {
             return false;
         }
         let sql = `UPDATE note_table
                 SET
                 notify_time = '${nextNotifyTime}',
-                has_review = '${reviewNum}',
+                review_num = '${reviewNum}',
                 gmt_modify = '${new Date().getTime() / 1000}'
-                WHERE birth_time = '${birthTime}'`;
+                WHERE note_id = '${note_id}'`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {

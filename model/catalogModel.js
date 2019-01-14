@@ -226,25 +226,6 @@ class CatalogModel {
         return result;
     }
 
-
-    async updateBlogReviewNotice(birthTime, nextNotifyTime, reviewNum) {
-        if(_.isUndefined(birthTime) || _.isUndefined(nextNotifyTime) || _.isUndefined(reviewNum)) {
-            return false;
-        }
-        let sql = `UPDATE review_table
-                SET
-                notify_time = '${nextNotifyTime}',
-                has_review = '${reviewNum}',
-                gmt_modify = '${new Date().getTime() / 1000}'
-                WHERE birth_time = '${birthTime}'`;
-
-        let res = await mysql.runSql(sql, dbConf.dbName)
-            .catch((err) => {
-                console.log(err);
-            });
-        return res;
-    }
-
     async getAllBlogArr() {
         let sql = `SELECT * FROM review_table WHERE state = 1 ORDER BY notify_time`;
 

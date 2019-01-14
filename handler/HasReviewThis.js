@@ -7,35 +7,36 @@ class HasReviewThis extends BaseClass{
     }
 
     async run(ctx, next) {
-        let paramOk = this.checkParams(['birthTime'])
-
-        if (!paramOk) {
-            return next();
-        }
-        console.log(this.param.birthTime);
-        // 判断该BLOG是否存在
-        let blogArr =  await this.ReviewModel.getBlogArrByBirthTime(this.param.birthTime);
-
-        if (!blogArr) {
-            this.responseFail('读取数据库，该blog并不存在');
-        }
-        if (blogArr.length === 0) {
-            this.responseFail('数据库中没有该blog的信息', errCode.NO_BLOG);
-            return next();
-        }
-
-        let reviewTime = blogArr[0].has_review + 1;
-        let nextNotifyTime = this.getNextReviewTime(reviewTime);
-
         try {
-            let updateRes = await this.ReviewModel.updateBlogReviewNotice(this.param.birthTime, nextNotifyTime, reviewTime);
+            debugger
+            let paramOk = this.checkParams(['note_id'])
+
+            if (!paramOk) {
+                return next();
+            }
+            if (typeof this.param.note_id !== 'number') {
+                throw new Error('参数数据格式不正确')
+            }
+            // 判断该BLOG是否存在
+            let blogArr =  await this.NoteModel.getArrByNoteId(this.param.note_id);
+
+            if (blogArr.length !== 1) {
+                throw new Error('该笔记在数据库中不唯一')
+                return
+            }
+
+            let reviewNum = Number(blogArr[0].review_num) + 1;
+            let frequency = Number(blogArr[0].frequency);
+            let nextNotifyTime = this.getNextReviewTime(reviewNum, frequency);
+
+            let updateRes = await this.NoteModel.updateBlogReviewNotice(this.param.note_id, nextNotifyTime, reviewNum);
             if (!updateRes) {
-                this.responseFail('复习次数增加失败');
+                throw new Error('复习次数增加失败')
                 return next();
             }
             ctx.body = {
                 success:true,
-                message: '复习次数增加成功'
+                message: '复习成功'
             }
             return next();
         } catch (e) {

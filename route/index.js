@@ -24,7 +24,7 @@ const route = async (ctx, next) => {
         return await (new DeleteNote()).handler(ctx, next);
     } else if (method === 'get_review_list') {
         return await (new GetReviewList()).handler(ctx, next);
-    } else if (method === 'hasReviewThis') {
+    } else if (method === 'review_this') {
         return await (new HasReviewThis()).handler(ctx, next);
     } else if (method === 'fetchAllBlogArr') {
         return await (new FetchAllBlogArr()).handler(ctx, next);
