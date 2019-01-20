@@ -8,7 +8,6 @@ class HasReviewThis extends BaseClass{
 
     async run(ctx, next) {
         try {
-            debugger
             let paramOk = this.checkParams(['note_id'])
 
             if (!paramOk) {
@@ -36,7 +35,10 @@ class HasReviewThis extends BaseClass{
             }
             ctx.body = {
                 success:true,
-                message: '复习成功'
+                message: '复习成功',
+                data: {
+                    next_notify_time: nextNotifyTime,
+                }
             }
             return next();
         } catch (e) {
