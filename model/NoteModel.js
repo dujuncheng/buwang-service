@@ -281,7 +281,7 @@ class NoteModel {
     // }
 
     async getReviewList () {
-        let sql = `SELECT * FROM note_table WHERE state = 1 ORDER BY notify_time`;
+        let sql = `SELECT * FROM note_table WHERE state = 1 AND LENGTH(content >= 1) ORDER BY notify_time`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
