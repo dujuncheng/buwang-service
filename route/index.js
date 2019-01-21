@@ -9,7 +9,7 @@ const ChangeNote                = require("../handler/ChangeNote.js");
 const DeleteNote                = require("../handler/DeleteNote.js");
 const GetReviewList             = require("../handler/GetReviewList.js");
 const HasReviewThis             = require("../handler/HasReviewThis.js");
-const FetchAllBlogArr           = require("../handler/FetchAllBlogArr.js");
+const SetFrequency           = require("../handler/SetFrequency.js");
 const SetReviewThis          = require("../handler/SetReviewThis.js");
 
 const route = async (ctx, next) => {
@@ -38,6 +38,8 @@ const route = async (ctx, next) => {
         return await (new RemoveCatalog()).handler(ctx, next);
     } else if (method === 'set_review') {
         return await (new SetReviewThis()).handler(ctx, next);
+    } else if (method === 'set_frequency') {
+        return await (new SetFrequency()).handler(ctx, next);
     }
 }
 

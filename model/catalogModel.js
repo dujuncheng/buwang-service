@@ -65,6 +65,7 @@ class CatalogModel {
             _.isUndefined(name)
         ) {
             throw new Error('写入数据库参数缺失');
+            return
         }
 
         let fieldStr = dbConf.catalogTableField.join(',');

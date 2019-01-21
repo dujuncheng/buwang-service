@@ -1,7 +1,7 @@
 const errCode = require("../config/errCode");
 const BaseClass = require('./baseClass.js');
 
-class SetReviewThis extends BaseClass{
+class SetFrequency extends BaseClass{
     constructor() {
         super();
     }
@@ -9,16 +9,16 @@ class SetReviewThis extends BaseClass{
     async run(ctx, next) {
         try  {
             // type 1 是设置为复习状态 ， type 0 是取消复习状态
-            let paramOk = this.checkParams(['note_id', 'type'])
+            let paramOk = this.checkParams(['note_id', 'frequency'])
 
             if (!paramOk) {
                 return next();
             }
             if (typeof this.param.note_id !== 'number' ||
-                typeof this.param.type !== 'number'
+                typeof this.param.frequency !== 'number'
             ) {
                 throw new Error('参数数据格式不正确')
-                return
+                return next();
             }
             // 判断该BLOG是否存在
             let blogArr =  await this.NoteModel.getArrByNoteId(this.param.note_id);
@@ -29,14 +29,9 @@ class SetReviewThis extends BaseClass{
             }
             // 判断改笔记的复习状态
             let note = blogArr[0];
-            if (note.need_review === this.param.type) {
-                if (this.param.type === 1) {
-                    throw new Error('该笔记已经处于复习状态')
-                    return
-                } else {
-                    throw new Error('该笔记已经处于取消复习的状态')
-                    return
-                }
+            if (note.need_review === 0) {
+                throw new Error('该笔记现在还不是待复习状态呢')
+                return
             }
 
             // 是否需要复习
@@ -88,4 +83,4 @@ class SetReviewThis extends BaseClass{
 
 
 
-module.exports = SetReviewThis;
+module.exports = SetFrequency;

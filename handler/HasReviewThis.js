@@ -15,6 +15,7 @@ class HasReviewThis extends BaseClass{
             }
             if (typeof this.param.note_id !== 'number') {
                 throw new Error('参数数据格式不正确')
+                return
             }
             // 判断该BLOG是否存在
             let blogArr =  await this.NoteModel.getArrByNoteId(this.param.note_id);

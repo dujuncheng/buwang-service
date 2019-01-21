@@ -35,6 +35,7 @@ let notify = ({title, desc, filePath, success, repeat}) => {
         // 如果有跳转链接的话，则跳转
         if (_.isUndefined(shell)) {
             throw new Error('shell is not defined')
+            return next()
         }
         if (!_.isUndefined(filePath)) {
             shell.openItem(filePath);

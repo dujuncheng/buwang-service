@@ -21,6 +21,7 @@ class AddNewNote extends BaseClass{
                 typeof this.param.note_id !== 'number'
             ) {
                 throw new Error('参数格式不对');
+                return
             }
 
             this.param.title = this.getRequestParam('title');
@@ -30,12 +31,14 @@ class AddNewNote extends BaseClass{
             let blogArr = await this.NoteModel.getArrByNoteId(this.param.note_id);
             if (blogArr.length > 0) {
                 throw new Error('数据库中已经有该数据的记录了');
+                return
             }
 
             // todo user_id
             let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, 1);
             if (catalogArr.length !== 1) {
                 throw new Error('目录不唯一，或者不存在');
+                return
             }
 
             let nextNotifyTime = this.getNextReviewTime(0);

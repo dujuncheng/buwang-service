@@ -15,6 +15,7 @@ class GetReviewList extends BaseClass{
             let noteArr = await this.NoteModel.getReviewList();
             if (!noteArr || !Array.isArray(noteArr)) {
                 throw new Error('查询noteArr失败')
+                return
             }
             ctx.body = {
                 success: true,

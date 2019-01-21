@@ -73,6 +73,7 @@ class NoteModel {
 
         ) {
             throw new Error('写入数据库参数缺失');
+            return
         }
 
         if (!title) {
@@ -198,6 +199,7 @@ class NoteModel {
     async getArrByCatalogId(catalog_id, user_id) {
         if (_.isUndefined(catalog_id) || _.isUndefined(user_id)) {
             throw new Error('读取数据库参数缺失');
+            return
         }
         let sql = `SELECT * FROM note_table WHERE 
         catalog_id = '${catalog_id}' 
@@ -223,6 +225,7 @@ class NoteModel {
     async getArrByNoteId(note_id) {
         if (_.isUndefined(note_id)) {
             throw new Error('读取数据库参数缺失');
+            return
         }
         let sql = `SELECT * FROM note_table WHERE note_id = '${note_id}' AND state = 1`;
 
@@ -241,6 +244,7 @@ class NoteModel {
     async getArrByNoteIds(noteIds) {
         if (_.isUndefined(noteIds)) {
             throw new Error('读取数据库参数缺失');
+            return
         }
         let str = `(${noteIds.join(',')})`
         let sql = `SELECT * FROM note_table WHERE note_id IN ${str} AND state = 1`;

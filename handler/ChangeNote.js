@@ -31,6 +31,7 @@ class ChangeNote extends BaseClass{
 
             if (!Array.isArray(this.param.change_arr)) {
                 throw new Error('参数格式不正确')
+                return
             }
 
             let changeArr = this.param.change_arr;
@@ -52,6 +53,7 @@ class ChangeNote extends BaseClass{
                 arr.length !== changeArr.length
             ) {
                 throw new Error('您修改的内容中，有的在数据库中找不到');
+                return
             }
 
             let updateRes = await this.NoteModel.updateNoteContent(noteIds, obj);
