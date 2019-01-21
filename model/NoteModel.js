@@ -285,8 +285,8 @@ class NoteModel {
 
     /**
      * 设置笔记的复习因子，1，2，3，4，5 共5个等级
-     * @param note_id
-     * @param frequency
+     * @param note_id 笔记id
+     * @param frequency 复习因子
      * @returns {Promise<*>}
      */
     async updateBlogReviewFrequecy({note_id, frequency}) {
