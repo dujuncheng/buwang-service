@@ -11,6 +11,7 @@ const GetReviewList             = require("../handler/GetReviewList.js");
 const HasReviewThis             = require("../handler/HasReviewThis.js");
 const FetchAllBlogArr           = require("../handler/FetchAllBlogArr.js");
 const CancelReviewThis          = require("../handler/CancelReviewThis.js");
+const SetReviewThis          = require("../handler/SetReviewThis.js");
 
 const route = async (ctx, next) => {
     let method = ctx.request.query.method || ctx.request.body.method;
@@ -40,6 +41,8 @@ const route = async (ctx, next) => {
         return await (new RenameCatalog()).handler(ctx, next);
     } else if (method === 'remove_catalog') {
         return await (new RemoveCatalog()).handler(ctx, next);
+    } else if (method === 'set_review') {
+        return await (new SetReviewThis()).handler(ctx, next);
     }
 }
 

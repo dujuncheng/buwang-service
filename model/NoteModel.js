@@ -252,6 +252,13 @@ class NoteModel {
         return res;
     }
 
+    /**
+     * 修改复习数据
+     * @param note_id
+     * @param nextNotifyTime
+     * @param reviewNum
+     * @returns {Promise<*>}
+     */
     async updateBlogReviewNotice(note_id, nextNotifyTime, reviewNum) {
         if(_.isUndefined(note_id) || _.isUndefined(nextNotifyTime) || _.isUndefined(reviewNum)) {
             return false;
@@ -270,18 +277,8 @@ class NoteModel {
         return res;
     }
 
-    // async getAllBlogArr() {
-    //     let sql = `SELECT * FROM note_table WHERE state = 1 ORDER BY notify_time`;
-    //
-    //     let res = await mysql.runSql(sql, dbConf.dbName)
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    //     return res;
-    // }
-
     async getReviewList () {
-        let sql = `SELECT * FROM note_table WHERE state = 1 AND LENGTH(content) > 0 ORDER BY notify_time`;
+        let sql = `SELECT * FROM note_table WHERE state = 1 AND need_review = 1 AND LENGTH(content) > 0 ORDER BY notify_time`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
