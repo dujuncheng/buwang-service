@@ -33,37 +33,14 @@ class SetFrequency extends BaseClass{
                 throw new Error('该笔记现在还不是待复习状态呢')
                 return
             }
-
-            // 是否需要复习
-            let needReview = this.param.type;
-            // 已经复习了多少次，第一次是0次
-            let reviewNum = 0;
-            // 默认的复习频率是怎么样的
-            let frequency = 0;
-            // 下次复习是什么时间
-            let nextNotifyTime = 0;
-
-            // 从【不复习】-> 【复习】
-            if (needReview) {
-                reviewNum = 0;
-                frequency = 3;
-                nextNotifyTime = this.getNextReviewTime(reviewNum, frequency);
-            } else {
-            //  从【复习】-> 【不复习】
-                reviewNum = 0;
-                frequency = 0;
-                nextNotifyTime = 0;
-            }
-
+            let frequency = this.param.frequency;
+            let note_id = this.param.note_id;
 
             let param = {
                 frequency,
-                note_id: this.param.note_id,
-                nextNotifyTime,
-                needReview,
-                reviewNum
+                note_id
             }
-            let updateRes = await this.NoteModel.updateBlogReviewNotice(param);
+            let updateRes = await this.NoteModel.updateBlogReviewFrequecy(param);
             if (!updateRes) {
                 throw new Error('设置复习状态失败')
                 return next();

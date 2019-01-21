@@ -283,6 +283,29 @@ class NoteModel {
         return res;
     }
 
+    /**
+     * 设置笔记的复习因子，1，2，3，4，5 共5个等级
+     * @param note_id
+     * @param frequency
+     * @returns {Promise<*>}
+     */
+    async updateBlogReviewFrequecy({note_id, frequency}) {
+        if(_.isUndefined(note_id) || _.isUndefined(frequency)) {
+            return false;
+        }
+        let sql = `UPDATE note_table
+                SET
+                frequency = '${frequency}',
+                gmt_modify = '${new Date().getTime() / 1000}'
+                WHERE note_id = '${note_id}'`;
+
+        let res = await mysql.runSql(sql, dbConf.dbName)
+            .catch((err) => {
+                console.log(err);
+            });
+        return res;
+    }
+
     async getReviewList () {
         let sql = `SELECT * FROM note_table WHERE state = 1 AND need_review = 1 AND LENGTH(content) > 0 ORDER BY notify_time`;
 
