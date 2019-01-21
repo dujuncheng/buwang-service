@@ -254,12 +254,12 @@ class NoteModel {
 
     /**
      * 修改复习数据
-     * @param note_id
-     * @param nextNotifyTime
-     * @param reviewNum
+     * @param note_id    笔记id
+     * @param nextNotifyTime  下次的复习时间
+     * @param reviewNum       已经复习的次数
      * @returns {Promise<*>}
      */
-    async updateBlogReviewNotice(note_id, nextNotifyTime, reviewNum) {
+    async updateBlogReviewNotice({note_id, nextNotifyTime, reviewNum, needReview, frequency}) {
         if(_.isUndefined(note_id) || _.isUndefined(nextNotifyTime) || _.isUndefined(reviewNum)) {
             return false;
         }
@@ -267,6 +267,8 @@ class NoteModel {
                 SET
                 notify_time = '${nextNotifyTime}',
                 review_num = '${reviewNum}',
+                need_review = '${needReview}',
+                frequency = '${frequency}',
                 gmt_modify = '${new Date().getTime() / 1000}'
                 WHERE note_id = '${note_id}'`;
 

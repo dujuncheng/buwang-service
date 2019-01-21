@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbefac63-d3fa-46e7-8b8f-e0f92a006441" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/handler/SetReviewThis.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/CancelReviewThis.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/HasReviewThis.js" beforeDir="false" afterPath="$PROJECT_DIR$/handler/HasReviewThis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/SetReviewThis.js" beforeDir="false" afterPath="$PROJECT_DIR$/handler/SetReviewThis.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/NoteModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/NoteModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/route/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/route/index.js" afterDir="false" />
     </list>
@@ -20,11 +22,11 @@
     <session id="-605948493">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="29" />
-          <entry key="project.open.time.0" value="29" />
+          <entry key="project.closed" value="30" />
+          <entry key="project.open.time.0" value="30" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="31" />
+          <entry key="project.opened" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -47,15 +49,15 @@
         <counts>
           <entry key="gitignore" value="14" />
           <entry key="html" value="28" />
-          <entry key="js" value="7262" />
-          <entry key="txt" value="451" />
+          <entry key="js" value="7723" />
+          <entry key="txt" value="493" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="28" />
-          <entry key="JavaScript" value="7262" />
-          <entry key="PLAIN_TEXT" value="465" />
+          <entry key="JavaScript" value="7723" />
+          <entry key="PLAIN_TEXT" value="507" />
         </counts>
       </usages-collector>
     </session>
@@ -74,23 +76,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handler/SetReviewThis.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="44" column="56" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="71" />
+            <state relative-caret-position="387">
+              <caret line="67" column="71" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="71" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/NoteModel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="280" column="79" selection-start-line="280" selection-start-column="79" selection-end-line="280" selection-end-column="79" />
+            <state relative-caret-position="280">
+              <caret line="261" column="32" selection-start-line="261" selection-start-column="10" selection-end-line="261" selection-end-column="32" />
               <folding>
                 <element signature="n#!!block;n#instance#0;n#NoteModel#0" />
                 <element signature="n#!!block;n#filter#0;n#NoteModel#0" />
                 <element signature="n#!!block;n#filter#1;n#NoteModel#0" />
                 <element signature="n#!!block;n#getArrByNoteIds#0;n#NoteModel#0" />
-                <marker date="1548069498299" expanded="true" signature="0:7448" ph="..." />
+                <marker date="1548070451414" expanded="true" signature="0:7595" ph="..." />
               </folding>
             </state>
           </provider>
@@ -123,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/route/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
+            <state relative-caret-position="412">
+              <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -170,9 +172,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id);</find>
-      <find>parent_id</find>
-      <find>makeCatalogTree</find>
       <find>note</find>
       <find>ORDER</find>
       <find>blog</find>
@@ -186,7 +185,6 @@
       <find>getArrByCatalogId</find>
       <find>changeArr[i].note_id</find>
       <find>updateNoteContent</find>
-      <find>note_id</find>
       <find>getNextReviewTime</find>
       <find>GetReviewList</find>
       <find>getAllBlogArr</find>
@@ -198,8 +196,12 @@
       <find>reviewTime</find>
       <find>birthTime</find>
       <find>birth_time</find>
-      <find>updateBlogReviewNotice</find>
       <find>AND</find>
+      <find>frequency</find>
+      <find>nextNotifyTime</find>
+      <find>reviewNum</find>
+      <find>note_id</find>
+      <find>updateBlogReviewNotice</find>
     </findStrings>
     <replaceStrings>
       <replace>noteArr</replace>
@@ -235,9 +237,9 @@
         <option value="$PROJECT_DIR$/model/catalogModel.js" />
         <option value="$PROJECT_DIR$/handler/HasReviewThis.js" />
         <option value="$PROJECT_DIR$/handler/GetReviewList.js" />
-        <option value="$PROJECT_DIR$/route/index.js" />
-        <option value="$PROJECT_DIR$/handler/SetReviewThis.js" />
         <option value="$PROJECT_DIR$/model/NoteModel.js" />
+        <option value="$PROJECT_DIR$/handler/SetReviewThis.js" />
+        <option value="$PROJECT_DIR$/route/index.js" />
       </list>
     </option>
   </component>
@@ -396,7 +398,8 @@
       <workItem from="1547970065437" duration="158000" />
       <workItem from="1547973317190" duration="537000" />
       <workItem from="1547974821384" duration="424000" />
-      <workItem from="1548068907529" duration="543000" />
+      <workItem from="1548068907529" duration="658000" />
+      <workItem from="1548069726429" duration="843000" />
     </task>
     <task id="LOCAL-00001" summary="add code">
       <created>1546704081750</created>
@@ -580,11 +583,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547973857471</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="【增加功能] 实现，设置笔记复习状态的接口">
+      <created>1548069536201</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1548069536201</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30466000" />
+    <option name="totallyTimeSpent" value="31424000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -602,9 +612,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32923833" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.31326783" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.07739558" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -639,7 +649,8 @@
     <MESSAGE value="【增加功能] 增加获取复习列表的功能" />
     <MESSAGE value="【增加功能] 增加【复习了此条笔记的功能】" />
     <MESSAGE value="【增加功能] fix bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="【增加功能] fix bugs" />
+    <MESSAGE value="【增加功能] 实现，设置笔记复习状态的接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="【增加功能] 实现，设置笔记复习状态的接口" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/common/mysql.js">
@@ -745,6 +756,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/handler/GetNoteList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -787,38 +805,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/route/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handler/SetReviewThis.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="44" column="56" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/NoteModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="280" column="79" selection-start-line="280" selection-start-column="79" selection-end-line="280" selection-end-column="79" />
+        <state relative-caret-position="280">
+          <caret line="261" column="32" selection-start-line="261" selection-start-column="10" selection-end-line="261" selection-end-column="32" />
           <folding>
             <element signature="n#!!block;n#instance#0;n#NoteModel#0" />
             <element signature="n#!!block;n#filter#0;n#NoteModel#0" />
             <element signature="n#!!block;n#filter#1;n#NoteModel#0" />
             <element signature="n#!!block;n#getArrByNoteIds#0;n#NoteModel#0" />
-            <marker date="1548069498299" expanded="true" signature="0:7448" ph="..." />
+            <marker date="1548070451414" expanded="true" signature="0:7595" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/SetReviewThis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="67" column="71" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
         </state>
       </provider>
     </entry>

@@ -10,7 +10,6 @@ const DeleteNote                = require("../handler/DeleteNote.js");
 const GetReviewList             = require("../handler/GetReviewList.js");
 const HasReviewThis             = require("../handler/HasReviewThis.js");
 const FetchAllBlogArr           = require("../handler/FetchAllBlogArr.js");
-const CancelReviewThis          = require("../handler/CancelReviewThis.js");
 const SetReviewThis          = require("../handler/SetReviewThis.js");
 
 const route = async (ctx, next) => {
@@ -29,8 +28,6 @@ const route = async (ctx, next) => {
         return await (new HasReviewThis()).handler(ctx, next);
     } else if (method === 'fetchAllBlogArr') {
         return await (new FetchAllBlogArr()).handler(ctx, next);
-    } else if (method === 'cancelReviewThis') {
-        return await (new CancelReviewThis()).handler(ctx, next);
     } else if (method === 'add_catalog') {
         return await (new AddNewCatalog()).handler(ctx, next);
     } else if (method === 'get_catalog') {

@@ -26,9 +26,17 @@ class HasReviewThis extends BaseClass{
 
             let reviewNum = Number(blogArr[0].review_num) + 1;
             let frequency = Number(blogArr[0].frequency);
+            let needReview = Number(blogArr[0].need_review);
             let nextNotifyTime = this.getNextReviewTime(reviewNum, frequency);
 
-            let updateRes = await this.NoteModel.updateBlogReviewNotice(this.param.note_id, nextNotifyTime, reviewNum);
+            let param = {
+                frequency,
+                note_id: this.param.note_id,
+                reviewNum,
+                nextNotifyTime,
+                needReview,
+            }
+            let updateRes = await this.NoteModel.updateBlogReviewNotice(param);
             if (!updateRes) {
                 throw new Error('复习次数增加失败')
                 return next();
