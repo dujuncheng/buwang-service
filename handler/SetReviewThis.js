@@ -67,25 +67,22 @@ class SetReviewThis extends BaseClass{
             }
             let updateRes = await this.NoteModel.updateBlogReviewNotice(param);
             if (!updateRes) {
-                throw new Error('复习次数增加失败')
+                throw new Error('设置复习状态失败')
                 return next();
             }
             ctx.body = {
                 success:true,
-                message: '复习成功',
-                data: {
-                    next_notify_time: nextNotifyTime,
-                }
+                message: '设置成功',
+                data: {}
             }
             return next();
         } catch (e) {
-            this.responseFail('复习次数增加失败', errCode.UPDATE_STATE_FAIL);
+            this.responseFail(e.message || "设置复习状态失败", errCode.UPDATE_STATE_FAIL);
             return next();
         }
     }
 }
 
 
-// export { DeleteFile }
 
 module.exports = SetReviewThis;

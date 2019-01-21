@@ -26,7 +26,7 @@ class HasReviewThis extends BaseClass{
 
             let reviewNum = Number(blogArr[0].review_num) + 1;
             let frequency = Number(blogArr[0].frequency);
-            let needReview = Number(blogArr[0].need_review);
+            let needReview = 1;
             let nextNotifyTime = this.getNextReviewTime(reviewNum, frequency);
 
             let param = {
