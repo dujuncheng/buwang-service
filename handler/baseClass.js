@@ -68,7 +68,7 @@ class BaseClass {
 
     /**
      * 获取到下次复习的记忆时长，单位s
-     * @param reviewNum
+     * @param reviewNum 从数据库中拿出来的值 + 1， 目前已经复习了多少次
      * @returns {number}
      */
     getNextReviewTime(reviewNum, frequency) {
