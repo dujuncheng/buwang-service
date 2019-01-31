@@ -1,4 +1,4 @@
-const addNewNote                = require('../handler/addNewNote.js');
+const addNewNote                = require('../handler/AddNewNote.js');
 const AddNewCatalog             = require('../handler/AddNewCatalog.js');
 const GetCatalog                = require('../handler/GetCatalog.js');
 const GetNoteList               = require('../handler/GetNoteList.js');
