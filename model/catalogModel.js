@@ -89,9 +89,7 @@ class CatalogModel {
         valueArr.push(Date.now() / 1000);
 
         const sql = `INSERT INTO catalog_table (${fieldStr}) VALUES (?,?,?,?,?,?,?,?)`;
-        console.log(sql)
-        console.log(valueArr)
-        console.log(dbConf.dbName)
+        
         let result = await mysql.bindSql(sql, valueArr, dbConf.dbName);
         return result;
     }
