@@ -4,13 +4,15 @@ const Router                = require('koa-router');
 const cors                  = require('koa2-cors');
 
 // node原生不支持
-const mysql = require('./common/mysql.js');
-const route = require('./route/index.js')
+const mysql                 = require('./common/mysql.js');
+const redis                 = require('./common/redis.js');
+const route                 = require('./route/index.js');
 
 async function serverinit () {
 
 
     mysql.init();
+	redis.init();
     const app = new Koa();
 
     app.use(bodyParser());

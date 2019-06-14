@@ -12,6 +12,7 @@ class Passport {
 		let result = '';
 		try {
 			result = await bcrypt.hash(password, saltRounds);
+			console.log(result)
 		} catch (e) {
 			console.log(e);
 		}
@@ -35,5 +36,6 @@ class Passport {
 	}
 }
 
+Passport.getHash('haohaoxuexi1234', 10)
 
 module.exports = Passport;

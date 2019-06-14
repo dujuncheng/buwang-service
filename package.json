@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "js-base64": "^2.4.9",
+    "js-base64": "^2.5.1",
     "koa": "^2.5.3",
     "koa-body": "^4.0.4",
     "koa-router": "^7.4.0",
@@ -19,5 +19,8 @@
     "sqlstring": "^2.3.1",
     "underscore": "^1.9.1",
     "xss": "^1.0.3"
+  },
+  "dependencies": {
+    "ioredis": "^4.10.0"
   }
 }
