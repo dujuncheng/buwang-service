@@ -1,5 +1,6 @@
 const NoteModel                  = require('../model/NoteModel.js');
 const CatalogModel               = require('../model/catalogModel.js');
+const UserModel                  = require('../model/UserModel.js');
 const errCode                    = require("../config/errCode");
 const _                          = require('underscore');
 const getSession                 = require('../library/session.js');
@@ -11,26 +12,24 @@ class BaseClass {
         this.param = {};
         this.NoteModel = NoteModel.instance();
         this.CatalogModel = CatalogModel.instance();
+        this.UserModel = UserModel.instance();
     }
     async handler(ctx, next) {
         this.ctx = ctx;
-        
-	    // this.uid = await getSession().checkLogin(ctx, next);
-	    //
-	    // if (!this.uid) {
-	    // 	this.responseFail('无效的会话',2);
-	    // 	return next;
-	    // }
-	 
+	    this.uid = await getSession().checkLogin(ctx, next);
+
+	    if (!this.uid) {
+	    	this.responseFail('无效的会话',2);
+	    	return next;
+	    }
 	    
-	    await getSession().setLogin(1, ctx);
+	    // 设置cookie
+	    // await getSession().setLogin(1, ctx);
 	    
-	    this.responseSuccess('success', 0, {a: 'a'})
-	    return next();
-        // await this.run(ctx, next);
-        // ctx.set('Access-Control-Allow-Origin','*');
-        // ctx.set('Access-Control-Allow-Methods','get,post');
-        // ctx.set('Access-Control-Allow-Headers','content-type')
+        await this.run(ctx, next);
+        ctx.set('Access-Control-Allow-Origin','*');
+        ctx.set('Access-Control-Allow-Methods','get,post');
+        ctx.set('Access-Control-Allow-Headers','content-type')
     }
     getRequestParam(paramName) {
         let method = this.ctx.request.method.toLowerCase();

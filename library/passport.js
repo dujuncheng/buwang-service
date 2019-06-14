@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt                = require('bcrypt');
 
 class Passport {
 	
@@ -34,8 +34,6 @@ class Passport {
 		}
 		return result;
 	}
-}
-
-Passport.getHash('haohaoxuexi1234', 10)
+};
 
 module.exports = Passport;

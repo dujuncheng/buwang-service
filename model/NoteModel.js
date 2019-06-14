@@ -3,9 +3,7 @@ const _                                 = require('underscore');
 const xss                               = require('xss');
 
 
-// webpack
-// import mysql from '../../common/mysql.js';
-// import {dbConf} from '../../config/db.js';
+const BaseModel                         = require('./BaseModel.js');
 
 const mysql = require('../common/mysql.js');
 const dbConf = require('../config/db.js');
@@ -24,8 +22,10 @@ const filteremoji = (originText) => {
     return newText;
 };
 
-class NoteModel {
-    constructor() {}
+class NoteModel extends BaseModel{
+    constructor() {
+    	super();
+    }
 
     static instance() {
         const clazz = 'NoteModel';
@@ -131,11 +131,11 @@ class NoteModel {
             titleStr = titleStr + str
         }
 
-        let sql =  `UPDATE note_table 
-            SET content = CASE note_id 
+        let sql =  `UPDATE note_table
+            SET content = CASE note_id
                 ${contentStr}
-            END, 
-            title = CASE note_id 
+            END,
+            title = CASE note_id
                 ${titleStr}
             END,
             gmt_modify = '${new Date().getTime() / 1000}'
@@ -201,9 +201,9 @@ class NoteModel {
             throw new Error('读取数据库参数缺失');
             return
         }
-        let sql = `SELECT * FROM note_table WHERE 
-        catalog_id = '${catalog_id}' 
-        AND 
+        let sql = `SELECT * FROM note_table WHERE
+        catalog_id = '${catalog_id}'
+        AND
         user_id = ${user_id}
         AND
         state = 1

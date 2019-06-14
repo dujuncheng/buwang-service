@@ -2,8 +2,10 @@ const SqlString                         = require('sqlstring');
 const _                                 = require('underscore');
 const xss                               = require('xss');
 
-const mysql = require('../common/mysql.js');
-const dbConf = require('../config/db.js');
+const mysql                             = require('../common/mysql.js');
+const dbConf                            = require('../config/db.js');
+const BaseModel                         = require('./BaseModel.js');
+
 
 
 const filteremoji = (originText) => {
@@ -19,8 +21,10 @@ const filteremoji = (originText) => {
     return newText;
 };
 
-class CatalogModel {
-    constructor() {}
+class CatalogModel extends BaseModel{
+    constructor() {
+    	super();
+    }
 
     static instance() {
         const clazz = 'CatalogModel';

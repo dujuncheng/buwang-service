@@ -40,6 +40,8 @@ const route = async (ctx, next) => {
         return await (new SetReviewThis()).handler(ctx, next);
     } else if (method === 'set_frequency') {
         return await (new SetFrequency()).handler(ctx, next);
+    } else if (method === 'register') {
+	    return await (new SetFrequency()).handler(ctx, next);
     }
 }
 
