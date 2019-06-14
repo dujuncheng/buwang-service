@@ -1,9 +1,8 @@
-const base64            = require('js-base64');
-const _                 = require('underscore');
-const errCode           = require('../config/errCode.js');
-const Password          = require('../library/passport.js');
+const Password          = require('../library/password.js');
+const CONST             = require('../common/const.js');
+const getSession        = require('../library/session.js');
 
-const BaseClass = require('./baseClass.js');
+const BaseClass         = require('./baseClass.js');
 
 
 class Register extends BaseClass{
@@ -34,8 +33,19 @@ class Register extends BaseClass{
 				return next();
 			}
 			
-			await this.checkEmailAvalible(email);
+			// 检查邮箱是否被注册过
+			let emailAvailible = await this.checkEmailAvalible(email);
+			if (!emailAvailible) {
+				return next();
+			}
 			
+			let result = await this.registerUser(email, password);
+			
+			if (!result) {
+				return next();
+			}
+			
+			this.responseSuccess('注册成功咯');
 			
 		} catch (e) {
 			this.responseFail(e.message || '网络错误', 0);
@@ -86,8 +96,57 @@ class Register extends BaseClass{
 		return result;
 	}
 	
+	/**
+	 * 检查邮箱是否被注册过
+	 * @param email
+	 * @returns {Promise<boolean>}
+	 */
 	async checkEmailAvalible(email) {
+		let result = false;
+		let where = `email = '${email}' AND (status = 1 OR status = 2)`;
+		
+		let arr = await this.UserModel.getUserBy(where);
+		
+		if (arr && arr.length > 0) {
+			result = false;
+			this.responseFail('抱歉哦该邮箱已经被注册过拉~');
+		} else {
+			result = true;
+		}
+		
+		return result;
+	}
 	
+	/**
+	 * 注册
+	 * @param email
+	 * @param password
+	 * @returns {Promise<void>}
+	 */
+	async registerUser(email, password) {
+		// 1. 密码加密
+		let hash = await Password.getHash(password, CONST.SALT_LENGTH);
+		if (!hash) {
+			this.responseFail('注册失败，密码有问题哦');
+			return false;
+		}
+		
+		// 2. 写入表中
+		let result = await this.UserModel.insertUser({
+			email,
+			password: hash,
+			status: 1,
+		});
+		
+		if (!result || !result.insertId) {
+			this.responseFail('注册失败，写入表中失败')
+			return false;
+		}
+		let uid = result.insertId;
+		// 3. 写入cookie
+		await getSession().setLogin(uid, this.ctx);
+		
+		return true;
 	}
 }
 

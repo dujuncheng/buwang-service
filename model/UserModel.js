@@ -38,24 +38,57 @@ class UserModel extends BaseModel{
 	 *
 	 * @param selector { id: 12, email: '23231' }
 	 * @param field
-	 * @returns {Promise<T>}
+	 * @returns {Promise<T>} 返回的是一个数组
 	 */
-	async getUserBy(selector, field = [
-		id,
-		email,
-		password,
-		nickname,
-		avatar,
-		status
+	async getUserBy(where, field = [
+		'id',
+		'email',
+		'password',
+		'nickname',
+		'avatar',
+		'status'
 	]) {
-		let where = this.makeSelector(selector);
-		let sql = `SELECT  FROM user_table WHERE ${where}`;
+		try {
+			let fields = this.arrToString(field);
+			
+			let sql = `SELECT ${fields} FROM user_table WHERE ${where}`;
+			
+			let res = await mysql.runSql(sql, dbConf.dbName)
+			return res;
+			
+		} catch (e) {
+			console.log(e);
+		}
+	}
+	
+	/**
+	 * 往表里面插入一张表
+	 * @param email
+	 * @param password
+	 * @param nickname
+	 * @param avatar
+	 * @param status
+	 * @returns {Promise<void>}
+	 */
+	async insertUser({email, password, nickname = '', avatar = '', status = ''}) {
+		let fieldStr = dbConf.userTableField.join(',');
 		
-		let res = await mysql.runSql(sql, dbConf.dbName)
-		.catch((err) => {
-			console.log(err);
-		});
-		return res;
+		let now = Math.round(Date.now() / 1000);
+		
+		let valueArr = [];
+		valueArr.push(0);
+		valueArr.push(email);
+		valueArr.push(password);
+		valueArr.push(nickname);
+		valueArr.push(avatar);
+		valueArr.push(status);
+		valueArr.push(now);
+		valueArr.push(now);
+		
+		
+		const sql = `INSERT INTO user_table (${fieldStr}) VALUES (?,?,?,?,?,?,?,?)`;
+		let result = await mysql.bindSql(sql, valueArr, dbConf.dbName);
+		return result;
 	}
 }
 

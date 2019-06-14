@@ -172,6 +172,5 @@ class BaseClass {
 	}
 }
 
-// export {BaseClass};
 
 module.exports = BaseClass;

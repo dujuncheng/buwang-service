@@ -1,5 +1,5 @@
-const addNewNote              = require('../handler/AddNewNote.js');
-const AddNewCatalog           = require('../handler/AddNewCatalog.js');
+const addNewNote                = require('../handler/AddNewNote.js');
+const AddNewCatalog             = require('../handler/AddNewCatalog.js');
 const GetCatalog                = require('../handler/GetCatalog.js');
 const GetNoteList               = require('../handler/GetNoteList.js');
 const MoveCatalog               = require('../handler/MoveCatalog.js');
@@ -9,8 +9,9 @@ const ChangeNote                = require("../handler/ChangeNote.js");
 const DeleteNote                = require("../handler/DeleteNote.js");
 const GetReviewList             = require("../handler/GetReviewList.js");
 const HasReviewThis             = require("../handler/HasReviewThis.js");
-const SetFrequency           = require("../handler/SetFrequency.js");
-const SetReviewThis          = require("../handler/SetReviewThis.js");
+const SetFrequency              = require("../handler/SetFrequency.js");
+const SetReviewThis             = require("../handler/SetReviewThis.js");
+const Register                  = require("../handler/Register.js");
 
 const route = async (ctx, next) => {
     let method = ctx.request.query.method || ctx.request.body.method;
@@ -41,11 +42,9 @@ const route = async (ctx, next) => {
     } else if (method === 'set_frequency') {
         return await (new SetFrequency()).handler(ctx, next);
     } else if (method === 'register') {
-	    return await (new SetFrequency()).handler(ctx, next);
+	    return await (new Register()).handler(ctx, next);
     }
 }
 
-
-// export {route};
 
 module.exports = route;

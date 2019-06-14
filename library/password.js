@@ -1,6 +1,6 @@
 const bcrypt                = require('bcrypt');
 
-class Passport {
+class Password {
 	
 	/**
 	 * 对用户的密码加密
@@ -9,6 +9,7 @@ class Passport {
 	 * @returns {Promise<string>}
 	 */
 	static async getHash (password, saltRounds) {
+		debugger
 		let result = '';
 		try {
 			result = await bcrypt.hash(password, saltRounds);
@@ -36,4 +37,4 @@ class Passport {
 	}
 };
 
-module.exports = Passport;
+module.exports = Password;
