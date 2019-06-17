@@ -15,18 +15,19 @@ class BaseClass {
         this.UserModel = UserModel.instance();
         // 该接口是否需要登录态
         this.needLogin = needLogin;
+        this.uid = '';
     }
     async handler(ctx, next) {
         this.ctx = ctx;
         
         if (this.needLogin) {
-	        this.uid = await getSession().checkLogin(ctx, next);
+        	let uid = await getSession().checkLogin(ctx, next);
+	        this.uid = Number(uid);
 	
 	        if (!this.uid) {
 		        this.responseFail('无效的会话',2);
 		        return next;
 	        };
-	        console.log(this.uid);
         }
 	    
         // await this.run(ctx, next);
@@ -46,6 +47,25 @@ class BaseClass {
 
         return result;
     }
+	
+	/**
+	 * 检查note是否存在，并且note_id唯一
+	 * @param noteId    笔记的id
+	 * @param uid       用户uid
+	 * @returns {Promise<*>}
+	 */
+	async checkHasOneNote(noteId, uid) {
+		let result = false;
+		
+		// 判断该note是否存在
+		let noteArr =  await this.NoteModel.getArrByNoteId(noteId, uid);
+		if (!noteArr || noteArr.length !== 1) {
+			return result;
+		}
+		
+		return noteArr;
+    }
+    
     /**
      * 校验传过来的参数是否都有
      * @param arr

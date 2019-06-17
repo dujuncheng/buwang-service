@@ -9,7 +9,6 @@ class DeleteNote extends BaseClass{
     }
     async run(ctx, next) {
         try {
-            // TODO userid
             let paramOk = this.checkParams(['note_id'])
 
             if (!paramOk) {
@@ -19,12 +18,15 @@ class DeleteNote extends BaseClass{
                 throw new Error('参数数据格式不正确')
                 return
             }
-            // 判断该note是否存在
-            let noteArr =  await this.NoteModel.getArrByNoteId(this.param.note_id);
-            if (noteArr.length !== 1) {
-                throw new Error('该note不唯一或不存在')
-                return
+            
+            
+            let uid = Number(this.uid);
+            let result = await this.checkHasOneNote(this.param.note_id, uid);
+            if (!result) {
+            	this.responseFail('该note不唯一或不存在', 3);
+            	return next();
             }
+            
             let updateRes = await this.NoteModel.updateNoteState(this.param.note_id, 0);
             if (!updateRes) {
                 this.responseFail('文件删除失败', errCode.UPDATE_STATE_FAIL);

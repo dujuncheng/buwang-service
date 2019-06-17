@@ -9,10 +9,8 @@ class GetReviewList extends BaseClass{
         super();
     }
     async run(ctx, next) {
-        //todo check cookie
-
         try {
-            let noteArr = await this.NoteModel.getReviewList();
+            let noteArr = await this.NoteModel.getReviewList(this.uid);
             if (!noteArr || !Array.isArray(noteArr)) {
                 throw new Error('查询noteArr失败')
                 return

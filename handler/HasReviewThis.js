@@ -18,15 +18,14 @@ class HasReviewThis extends BaseClass{
                 return
             }
             // 判断该BLOG是否存在
-            let blogArr =  await this.NoteModel.getArrByNoteId(this.param.note_id);
+	        let result = await this.checkHasOneNote(this.param.note_id, this.uid);
+	        if (!result) {
+		        this.responseFail('该note不唯一或不存在', 3);
+		        return next();
+	        }
 
-            if (blogArr.length !== 1) {
-                throw new Error('该笔记在数据库中不唯一')
-                return
-            }
-
-            let reviewNum = Number(blogArr[0].review_num) + 1;
-            let frequency = Number(blogArr[0].frequency);
+            let reviewNum = Number(result[0].review_num) + 1;
+            let frequency = Number(result[0].frequency);
             let needReview = 1;
             let nextNotifyTime = this.getNextReviewTime(reviewNum, frequency);
 

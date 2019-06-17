@@ -32,7 +32,7 @@ class RenameCatalog extends BaseClass{
             }
 
             // 确保catalog_id 是真的存在
-            let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, 1);
+            let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, this.uid);
             if (!Array.isArray(catalogArr) || catalogArr.length !== 1) {
                 throw new Error('catalog_id不唯一或不存在')
                 return;

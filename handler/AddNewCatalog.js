@@ -32,9 +32,8 @@ class AddNewCatalog extends BaseClass{
                 this.responseFail('名字长度不能为0', errCode.NOT_VALID_PARAM);
                 return next();
             }
-
-            // todo uid
-            let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, 1);
+            
+            let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, this.uid);
             if (catalogArr.length > 0) {
                 this.responseFail('数据库中已经有该数据的记录了', errCode.ADD_BUT_ALREADY_HAVE);
                 return next();
@@ -42,7 +41,7 @@ class AddNewCatalog extends BaseClass{
 
             let res = await this.CatalogModel.addNewCatalog(
                 this.selfId,
-                1,
+                this.uid,
                 this.parentId,
                 this.name,
             );

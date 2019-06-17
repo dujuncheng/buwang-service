@@ -11,8 +11,7 @@ class GetCatalog extends BaseClass{
     }
     async run(ctx, next) {
         try {
-            // todo 从cookie中拿到uid
-            let catalogArr = await this.CatalogModel.getArrByUid(1);
+            let catalogArr = await this.CatalogModel.getArrByUid(this.uid);
             let catalogTree = await this.makeCatalogTree(catalogArr);
             ctx.body = {
                 success: true,
@@ -63,8 +62,7 @@ class GetCatalog extends BaseClass{
         return result;
     }
     async getNoteNum(catalog_id) {
-        // todo user_id
-        let noteArr = await this.NoteModel.getArrByCatalogId(catalog_id, 1);
+        let noteArr = await this.NoteModel.getArrByCatalogId(catalog_id, this.uid);
         return noteArr.length;
     }
 }

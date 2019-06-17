@@ -11,7 +11,7 @@ class GetNoteList extends BaseClass{
     }
     async run(ctx, next) {
         try {
-            let paramOk = this.checkParams(['catalog_id'])
+            let paramOk = this.checkParams(['catalog_id']);
 
             if (!paramOk) {
                 throw new Error('参数不正确')
@@ -22,8 +22,8 @@ class GetNoteList extends BaseClass{
                 throw new Error('参数不正确')
                 return next();
             }
-
-            let noteList = await this.NoteModel.getArrByCatalogId(this.param.catalog_id, 1);
+            
+            let noteList = await this.NoteModel.getArrByCatalogId(this.param.catalog_id, this.uid);
             if (noteList) {
                 ctx.body = {
                     success: true,

@@ -21,14 +21,14 @@ class SetReviewThis extends BaseClass{
                 return
             }
             // 判断该BLOG是否存在
-            let blogArr =  await this.NoteModel.getArrByNoteId(this.param.note_id);
-
-            if (blogArr.length !== 1) {
-                throw new Error('该笔记在数据库中不唯一')
-                return
-            }
+	        let result = await this.checkHasOneNote(this.param.note_id, this.uid);
+	        if (!result) {
+		        this.responseFail('该note不唯一或不存在', 3);
+		        return next();
+	        }
+	        
             // 判断改笔记的复习状态
-            let note = blogArr[0];
+            let note = result[0];
             if (note.need_review === this.param.type) {
                 if (this.param.type === 1) {
                     throw new Error('该笔记已经处于复习状态')

@@ -33,7 +33,7 @@ class MoveCatalog extends BaseClass{
             }
 
             // 确保catalog_id 是真的存在
-            let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, 1);
+            let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, this.uid);
             if (!Array.isArray(catalogArr) || catalogArr.length !== 1) {
                 throw new Error('catalog_id不唯一或不存在')
                 return;
@@ -41,14 +41,14 @@ class MoveCatalog extends BaseClass{
 
             // 确保parent_id是真的存在
             if (this.param.parent_id !== 0) {
-                let parentArr = await this.CatalogModel.getArrByCatalogId(this.param.parent_id, 1);
+                let parentArr = await this.CatalogModel.getArrByCatalogId(this.param.parent_id, this.uid);
                 if (!Array.isArray(parentArr) || parentArr.length < 1) {
                     throw new Error('父目录不存在')
                     return;
                 }
             }
 
-            let updateRes = await this.CatalogModel.moveCatalog(this.param.catalog_id, 1, this.param.parent_id);
+            let updateRes = await this.CatalogModel.moveCatalog(this.param.catalog_id, this.uid, this.param.parent_id);
             if (updateRes) {
                 ctx.body = {
                     success:true,

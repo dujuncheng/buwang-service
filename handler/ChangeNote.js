@@ -48,7 +48,7 @@ class ChangeNote extends BaseClass{
             }
 
             // 判断该BLOG是否存在
-            let arr = await this.NoteModel.getArrByNoteIds(noteIds);
+            let arr = await this.NoteModel.getArrByNoteIds(noteIds, this.uid);
             if (arr.length !== noteIds.length ||
                 arr.length !== changeArr.length
             ) {

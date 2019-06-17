@@ -241,13 +241,13 @@ class NoteModel extends BaseModel{
      * @param birthTime
      * @returns {Promise<T>}
      */
-    async getArrByNoteIds(noteIds) {
+    async getArrByNoteIds(noteIds, uid) {
         if (_.isUndefined(noteIds)) {
             throw new Error('读取数据库参数缺失');
             return
         }
         let str = `(${noteIds.join(',')})`
-        let sql = `SELECT * FROM note_table WHERE note_id IN ${str} AND state = 1`;
+        let sql = `SELECT * FROM note_table WHERE note_id IN ${str} AND state = 1 AND user_id = ${uid}`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
@@ -306,8 +306,12 @@ class NoteModel extends BaseModel{
         return res;
     }
 
-    async getReviewList () {
-        let sql = `SELECT * FROM note_table WHERE state = 1 AND need_review = 1 AND LENGTH(content) > 0 ORDER BY notify_time`;
+    async getReviewList (uid) {
+    	if (uid === undefined) {
+    		return false;
+	    }
+    	
+        let sql = `SELECT * FROM note_table WHERE state = 1 AND need_review = 1 AND user_id = ${uid} ORDER BY notify_time`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
