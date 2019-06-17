@@ -7,7 +7,7 @@ const BaseClass         = require('./baseClass.js');
 
 class Register extends BaseClass{
 	constructor() {
-		super();
+		super(false);
 	}
 	async run(ctx, next) {
 		try {

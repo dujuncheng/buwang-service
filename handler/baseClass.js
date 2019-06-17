@@ -7,26 +7,29 @@ const getSession                 = require('../library/session.js');
 
 
 class BaseClass {
-    constructor() {
+    constructor(needLogin = true) {
         this.ctx = '';
         this.param = {};
         this.NoteModel = NoteModel.instance();
         this.CatalogModel = CatalogModel.instance();
         this.UserModel = UserModel.instance();
+        // 该接口是否需要登录态
+        this.needLogin = needLogin;
     }
     async handler(ctx, next) {
         this.ctx = ctx;
-	    this.uid = await getSession().checkLogin(ctx, next);
-
-	    if (!this.uid) {
-	    	this.responseFail('无效的会话',2);
-	    	return next;
-	    }
+        
+        if (this.needLogin) {
+	        this.uid = await getSession().checkLogin(ctx, next);
+	
+	        if (!this.uid) {
+		        this.responseFail('无效的会话',2);
+		        return next;
+	        };
+	        console.log(this.uid);
+        }
 	    
-	    // 设置cookie
-	    // await getSession().setLogin(1, ctx);
-	    
-        await this.run(ctx, next);
+        // await this.run(ctx, next);
         ctx.set('Access-Control-Allow-Origin','*');
         ctx.set('Access-Control-Allow-Methods','get,post');
         ctx.set('Access-Control-Allow-Headers','content-type')
