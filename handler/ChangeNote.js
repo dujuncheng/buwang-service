@@ -30,7 +30,7 @@ class ChangeNote extends BaseClass{
             }
 
             if (!Array.isArray(this.param.change_arr)) {
-                throw new Error('参数格式不正确')
+	            throw new Error('参数格式不正确')
                 return
             }
 
@@ -39,7 +39,11 @@ class ChangeNote extends BaseClass{
             let obj = {}
 
             for (let i = 0; i < changeArr.length; i++) {
-                let note_id = changeArr[i].note_id
+                let note_id = changeArr[i].note_id;
+                if (!note_id) {
+	                throw new Error('参数格式不正确')
+                	return;
+                }
                 noteIds.push(note_id)
                 obj[note_id] = {
                     title: changeArr[i].title,

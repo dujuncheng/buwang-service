@@ -32,6 +32,8 @@ class Session {
 		let session = false;
 		
 		let xsession = ctx.cookies.get('_x_session');
+		
+		console.log(xsession);
 		if (xsession) {
 			session = xsession;
 		}

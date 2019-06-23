@@ -6,8 +6,15 @@ const SALT_LENGTH = 5;
 
 
 
+const ERROR_CODE = {
+	NOT_REGISTER: 1,
+}
+
+
+
 
 module.exports = {
 	SESSION_LAST,
-	SALT_LENGTH
+	SALT_LENGTH,
+	ERROR_CODE,
 }

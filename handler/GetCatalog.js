@@ -30,7 +30,13 @@ class GetCatalog extends BaseClass{
             return next();
         }
     }
-    async makeCatalogTree(arr) {
+	
+	/**
+	 * @arr 转化为 @json
+	 * @param arr
+	 * @returns {Promise<Array>}
+	 */
+	async makeCatalogTree(arr) {
         let result = [];
         for (let i = arr.length - 1; i >= 0; i--) {
             if (arr[i].parent_id === 0) {

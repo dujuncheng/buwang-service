@@ -32,8 +32,18 @@ class AddNewCatalog extends BaseClass{
                 this.responseFail('名字长度不能为0', errCode.NOT_VALID_PARAM);
                 return next();
             }
-            
-            let catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, this.uid);
+	
+            // 检查父目录是否存在
+            if (this.parentId !== 0) {
+	            let parentArr = await this.CatalogModel.getArrByCatalogId(this.parentId, this.uid);
+	            if (parentArr.length === 0) {
+		            this.responseFail('数据库中父目录不存在', errCode.ADD_BUT_ALREADY_HAVE);
+		            return next();
+	            }
+            }
+	       
+            // 检查创建的目录中，是否存在
+            let catalogArr = await this.CatalogModel.getArrByCatalogId(this.selfId, this.uid);
             if (catalogArr.length > 0) {
                 this.responseFail('数据库中已经有该数据的记录了', errCode.ADD_BUT_ALREADY_HAVE);
                 return next();

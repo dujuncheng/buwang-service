@@ -16,6 +16,7 @@ const Login                     = require("../handler/Login.js");
 
 const route = async (ctx, next) => {
     let method = ctx.request.query.method || ctx.request.body.method;
+
     if (method === 'add_note') {
         return await (new addNewNote()).handler(ctx, next);
     } else if (method === 'get_note_list') {

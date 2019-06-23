@@ -29,7 +29,7 @@ class AddNewNote extends BaseClass{
 
             // 确保这个note之前是没有的
 	        let result = await this.checkHasOneNote(this.param.note_id, this.uid);
-	        if (!result) {
+	        if (result) {
 		        this.responseFail('该note不唯一或不存在', 3);
 		        return next();
 	        }

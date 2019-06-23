@@ -10,7 +10,19 @@ class GetReviewList extends BaseClass{
     }
     async run(ctx, next) {
         try {
-            let noteArr = await this.NoteModel.getReviewList(this.uid);
+	        // 检查params
+	        let paramsOk = this.checkParams(['page', 'page_size']);
+	        if (!paramsOk) {
+		        return next();
+	        }
+        	
+	        let page = Number(this.param.page);
+	        let pageSize = Number(this.param.page_size);
+	        
+	        let offset = (page - 1) * pageSize;
+	        let limit = pageSize;
+	        debugger
+            let noteArr = await this.NoteModel.getReviewList(this.uid, limit, offset);
             if (!noteArr || !Array.isArray(noteArr)) {
                 throw new Error('查询noteArr失败')
                 return

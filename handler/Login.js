@@ -104,7 +104,7 @@ class Login extends BaseClass{
 		let arr = await this.UserModel.getUserBy(where);
 		
 		if (!arr || arr.length !== 1 || !arr[0]) {
-			this.responseFail('该邮箱未注册, 您请先注册呢');
+			this.responseFail('该邮箱未注册, 您请先注册呢', CONST.ERROR_CODE.NOT_REGISTER);
 			return false;
 		}
 		

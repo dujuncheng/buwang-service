@@ -27,17 +27,6 @@ class SetReviewThis extends BaseClass{
 		        return next();
 	        }
 	        
-            // 判断改笔记的复习状态
-            let note = result[0];
-            if (note.need_review === this.param.type) {
-                if (this.param.type === 1) {
-                    throw new Error('该笔记已经处于复习状态')
-                    return
-                } else {
-                    throw new Error('该笔记已经处于取消复习的状态')
-                    return
-                }
-            }
 
             // 是否需要复习
             let needReview = this.param.type;

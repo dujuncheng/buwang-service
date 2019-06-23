@@ -247,7 +247,7 @@ class NoteModel extends BaseModel{
             return
         }
         let str = `(${noteIds.join(',')})`
-        let sql = `SELECT * FROM note_table WHERE note_id IN ${str} AND state = 1 AND user_id = ${uid}`;
+        let sql = `SELECT id FROM note_table WHERE note_id IN ${str} AND state = 1 AND user_id = ${uid}`;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
@@ -306,12 +306,34 @@ class NoteModel extends BaseModel{
         return res;
     }
 
-    async getReviewList (uid) {
+    async getReviewList (uid, limit = 20, offset = 0, field = [
+    	'note_id',
+	    'catalog_id',
+	    'title',
+	    'content',
+	    'need_review',
+	    'notify_time',
+	    'frequency',
+	    'review_num',
+    ]) {
+    	debugger
+    	// todo uid 测试先写死
+    	uid = 1
     	if (uid === undefined) {
     		return false;
 	    }
-    	
-        let sql = `SELECT * FROM note_table WHERE state = 1 AND need_review = 1 AND user_id = ${uid} ORDER BY notify_time`;
+    	let fieldStr = this.arrToString(field);
+        let sql = `SELECT ${fieldStr}
+        FROM note_table
+        WHERE state = 1
+        AND need_review = 1
+        AND user_id = ${uid}
+        ORDER BY
+        notify_time DESC,
+        id DESC
+        LIMIT ${limit}
+        OFFSET ${offset}
+        `;
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {

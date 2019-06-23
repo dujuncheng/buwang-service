@@ -23,14 +23,14 @@ class BaseClass {
         if (this.needLogin) {
         	let uid = await getSession().checkLogin(ctx, next);
 	        this.uid = Number(uid);
-	
+	        console.log(uid);
 	        if (!this.uid) {
 		        this.responseFail('无效的会话',2);
 		        return next;
 	        };
         }
 	    
-        // await this.run(ctx, next);
+        await this.run(ctx, next);
         ctx.set('Access-Control-Allow-Origin','*');
         ctx.set('Access-Control-Allow-Methods','get,post');
         ctx.set('Access-Control-Allow-Headers','content-type')
@@ -55,12 +55,11 @@ class BaseClass {
 	 * @returns {Promise<*>}
 	 */
 	async checkHasOneNote(noteId, uid) {
-		let result = false;
-		
 		// 判断该note是否存在
 		let noteArr =  await this.NoteModel.getArrByNoteId(noteId, uid);
+		
 		if (!noteArr || noteArr.length !== 1) {
-			return result;
+			return false;
 		}
 		
 		return noteArr;
