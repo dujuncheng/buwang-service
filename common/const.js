@@ -8,6 +8,7 @@ const SALT_LENGTH = 5;
 
 const ERROR_CODE = {
 	NOT_REGISTER: 1,
+	NOT_LOGIN: 2,
 }
 
 

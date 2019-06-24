@@ -89,9 +89,9 @@ class Session {
 		let cookie = `${session1}_${session2}`;
 		let encode = Base64.encode(cookie);
 		let option = {
-			maxAge: CONST.SESSION_LAST * 1000,
-			path:"/",
-			overwrite:"true",
+			maxAge: CONST.SESSION_LAST,
+			overwrite: true,
+			httpOnly: false,
 		}
 		
 		ctx.cookies.set('_x_session', encode, option);
@@ -115,8 +115,8 @@ class Session {
 		if (!session || session.length === 0) {
 			ctx.body = {
 				success: false,
-				err_code: 2,
-				message: '无效的会话',
+				err_code: CONST.ERROR_CODE.NOT_LOGIN,
+				message: '无效的会话, 请登录',
 			};
 			return next();
 		}

@@ -16,7 +16,7 @@ async function serverinit () {
     const app = new Koa();
 
     app.use(bodyParser());
-    app.use(cors());
+    app.use(cors({credentials: true}));
     var router = new Router();
     router.all('/notebook', route);
 

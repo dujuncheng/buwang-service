@@ -2,6 +2,7 @@ const NoteModel                  = require('../model/NoteModel.js');
 const CatalogModel               = require('../model/catalogModel.js');
 const UserModel                  = require('../model/UserModel.js');
 const errCode                    = require("../config/errCode");
+const CONST                      = require('../common/const.js');
 const _                          = require('underscore');
 const getSession                 = require('../library/session.js');
 
@@ -23,17 +24,17 @@ class BaseClass {
         if (this.needLogin) {
         	let uid = await getSession().checkLogin(ctx, next);
 	        this.uid = Number(uid);
-	        console.log(uid);
 	        if (!this.uid) {
-		        this.responseFail('无效的会话',2);
+		        this.responseFail('无效的会话，请登录', CONST.ERROR_CODE.NOT_LOGIN);
 		        return next;
 	        };
         }
 	    
         await this.run(ctx, next);
-        ctx.set('Access-Control-Allow-Origin','*');
-        ctx.set('Access-Control-Allow-Methods','get,post');
-        ctx.set('Access-Control-Allow-Headers','content-type')
+        // ctx.set('Access-Control-Allow-Origin','http://localhost:9080');
+	    // ctx.set('Access-Control-Allow-Credentials','true')
+        // ctx.set('Access-Control-Allow-Methods','get,post,options');
+        // ctx.set('Access-Control-Allow-Headers','content-type,Authorization')
     }
     getRequestParam(paramName) {
         let method = this.ctx.request.method.toLowerCase();

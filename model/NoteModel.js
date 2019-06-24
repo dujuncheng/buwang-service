@@ -305,7 +305,15 @@ class NoteModel extends BaseModel{
             });
         return res;
     }
-
+	
+	/**
+	 * 获取复习列表
+	 * @param uid
+	 * @param limit   限制 false | 20, 40
+	 * @param offset
+	 * @param field
+	 * @returns {Promise<*>}
+	 */
     async getReviewList (uid, limit = 20, offset = 0, field = [
     	'note_id',
 	    'catalog_id',
@@ -316,24 +324,35 @@ class NoteModel extends BaseModel{
 	    'frequency',
 	    'review_num',
     ]) {
-    	debugger
-    	// todo uid 测试先写死
-    	uid = 1
     	if (uid === undefined) {
     		return false;
 	    }
     	let fieldStr = this.arrToString(field);
-        let sql = `SELECT ${fieldStr}
-        FROM note_table
-        WHERE state = 1
-        AND need_review = 1
-        AND user_id = ${uid}
-        ORDER BY
-        notify_time DESC,
-        id DESC
-        LIMIT ${limit}
-        OFFSET ${offset}
-        `;
+    	
+    	let sql = ''
+    	if (!limit) {
+		    sql = `SELECT ${fieldStr}
+	        FROM note_table
+	        WHERE state = 1
+	        AND need_review = 1
+	        AND user_id = ${uid}
+	        ORDER BY
+	        notify_time DESC,
+	        id DESC
+	        `;
+	    } else {
+		    sql = `SELECT ${fieldStr}
+	        FROM note_table
+	        WHERE state = 1
+	        AND need_review = 1
+	        AND user_id = ${uid}
+	        ORDER BY
+	        notify_time DESC,
+	        id DESC
+	        LIMIT ${limit}
+	        OFFSET ${offset}
+	        `;
+	    }
 
         let res = await mysql.runSql(sql, dbConf.dbName)
             .catch((err) => {
