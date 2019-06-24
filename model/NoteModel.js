@@ -337,8 +337,8 @@ class NoteModel extends BaseModel{
 	        AND need_review = 1
 	        AND user_id = ${uid}
 	        ORDER BY
-	        notify_time ACS,
-	        id ACS
+	        notify_time ASC,
+	        id ASC
 	        `;
 	    } else {
 		    sql = `SELECT ${fieldStr}
@@ -347,8 +347,8 @@ class NoteModel extends BaseModel{
 	        AND need_review = 1
 	        AND user_id = ${uid}
 	        ORDER BY
-	        notify_time ACS,
-	        id ACS
+	        notify_time ASC,
+	        id ASC
 	        LIMIT ${limit}
 	        OFFSET ${offset}
 	        `;
