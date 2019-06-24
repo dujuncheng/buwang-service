@@ -8,7 +8,7 @@ let init = async () => {
             connectionLimit: 30,
             host: 'localhost',
             user: 'root',
-            password: 'haohaoxuexi1234',
+            password: '',
             database: 'notebook',
             charset: 'UTF8MB4_GENERAL_CI',
         });
