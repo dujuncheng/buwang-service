@@ -93,7 +93,7 @@ class Session {
 			overwrite: true,
 			httpOnly: false,
 		}
-		
+		ctx.set('x_session', encode);
 		ctx.cookies.set('_x_session', encode, option);
 	}
 	
