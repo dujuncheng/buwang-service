@@ -13,6 +13,7 @@ const SetFrequency              = require("../handler/SetFrequency.js");
 const SetReviewThis             = require("../handler/SetReviewThis.js");
 const Register                  = require("../handler/Register.js");
 const Login                     = require("../handler/Login.js");
+const GetContent                = require("../handler/GetContent.js");
 
 const route = async (ctx, next) => {
     let method = ctx.request.query.method || ctx.request.body.method;
@@ -47,6 +48,8 @@ const route = async (ctx, next) => {
 	    return await (new Register()).handler(ctx, next);
     } else if (method === 'login') {
 	    return await (new Login()).handler(ctx, next);
+    } else if (method === 'get_content') {
+    	return await (new GetContent().handler(ctx, next));
     }
 }
 

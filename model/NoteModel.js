@@ -104,8 +104,31 @@ class NoteModel extends BaseModel{
         let result = await mysql.bindSql(sql, valueArr, dbConf.dbName);
         return result;
     }
-
-
+	
+	/**
+	 * 根据 @noteId 和 @uid 找出 state ==1 的笔记
+	 * @param noteId
+	 * @param uid
+	 * @returns {Promise<*>}
+	 */
+	async getContent(noteId, uid) {
+    	if (!noteId || !uid) {
+    		return false;
+	    }
+	    let sql = `SELECT * FROM note_table WHERE
+        note_id = '${noteId}'
+        AND
+        user_id = ${uid}
+        AND
+        state = 1
+        `;
+	
+	    let res = await mysql.runSql(sql, dbConf.dbName)
+	    .catch((err) => {
+		    console.log(err);
+	    });
+	    return res;
+    }
     /**
      *
      * @param note_id
