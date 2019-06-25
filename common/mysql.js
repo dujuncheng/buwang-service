@@ -1,6 +1,6 @@
 const mysql                                         = require('mysql');
 
-// const config                                      = require('../../config.js')
+const config                                      = require('../../config.js')
 
 let pool = '';
 
@@ -10,8 +10,7 @@ let init = async () => {
             connectionLimit: 30,
             host: 'localhost',
             user: 'root',
-            // password: config.nanaDbPass,
-            password: 'haohaoxuexi1234',
+            password: config.nanaDbPass,
             database: 'notebook',
             charset: 'UTF8MB4_GENERAL_CI',
         });
