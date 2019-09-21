@@ -244,25 +244,15 @@ class NoteModel extends BaseModel {
   /**
    *
    * @param note_id 要查询的笔记id
+   * @param field [id, content]
    * @param where { note_id: 1, uid}
    * @returns {Promise<T>}
    */
   async getNoteArr(field, where) {
-    let whereStr = '';
-    if (where && Object.keys(where).length > 0) {
-      const keys = Object.keys(where);
-      const tmp = [];
-      for (let i = 0; i < keys.length; i++) {
-        if (keys[i] && where[keys[i]]) {
-          tmp.push(`${keys[i]} = ${where[keys[i]]}`);
-        }
-      }
-      whereStr = `WHERE ${tmp.join('AND')}`;
-    } else {
-      whereStr = '';
-    }
+    const whereStr = this.objToString(where);
+    const fieldStr = this.arrToString(field);
 
-    const sql = `SELECT * FROM note_table ${whereStr}`;
+    const sql = `SELECT ${fieldStr} FROM note_table ${whereStr ? `WHERE${whereStr}` : ''}`;
 
     const res = await mysql.runSql(sql, dbConf.dbName)
       .catch((err) => {
@@ -320,9 +310,9 @@ class NoteModel extends BaseModel {
      * @returns {Promise<*>}
      */
   async updateBlogReviewNotice({
-    note_id, nextNotifyTime, reviewNum, needReview, frequency,
+    noteId, nextNotifyTime, reviewNum, needReview, frequency,
   }) {
-    if (_.isUndefined(note_id) || _.isUndefined(nextNotifyTime) || _.isUndefined(reviewNum)) {
+    if (_.isUndefined(noteId) || _.isUndefined(nextNotifyTime) || _.isUndefined(reviewNum)) {
       return false;
     }
     const sql = `UPDATE note_table
@@ -332,7 +322,33 @@ class NoteModel extends BaseModel {
                 need_review = '${needReview}',
                 frequency = '${frequency}',
                 gmt_modify = '${new Date().getTime() / 1000}'
-                WHERE note_id = '${note_id}'`;
+                WHERE note_id = '${noteId}'`;
+
+    const res = await mysql.runSql(sql, dbConf.dbName)
+      .catch((err) => {
+        console.log(err);
+      });
+    return res;
+  }
+
+  /**
+   * 修改笔记的数据
+   * @param set { publish: 1 }
+   * @param where {note_id: 2}
+   * @returns {Promise<*>}
+   */
+  async updateNote(set, where) {
+    if (!set || Object.keys(set).length === 0 || !where || Object.keys(where).length === 0) {
+      return false;
+    }
+    const whereStr = this.objToString(where, 'AND');
+    const setStr = this.objToString(set, ',');
+    const sql = `UPDATE
+                note_table
+                SET
+                ${setStr},
+                gmt_modify = '${new Date().getTime() / 1000}'
+                WHERE ${whereStr}`;
 
     const res = await mysql.runSql(sql, dbConf.dbName)
       .catch((err) => {

@@ -8,6 +8,7 @@ class SetReviewThis extends BaseClass {
 
   async run(ctx, next) {
     try {
+      debugger;
       // type 1 是设置为公开博客状态 ， type 0 是取消公开为博客
       const paramOk = this.checkParams(['note_id', 'type']);
 
@@ -19,17 +20,21 @@ class SetReviewThis extends BaseClass {
       ) {
         throw new Error('参数数据格式不正确');
       }
-      // 判断该BLOG是否存在
-      const result = await this.checkHasOneNote(this.param.note_id, this.uid);
-      if (!result) {
-        this.responseFail('该note不唯一或不存在', 3);
-        return next();
+
+      await this.checkNote();
+
+      const set = {
+        publish: this.param.type === 1 ? 1 : 0,
+      };
+      const where = {
+        note_id: this.param.note_id,
+      };
+      const updateRes = await this.NoteModel.updateNote(set, where);
+
+      if (!updateRes) {
+        throw new Error('设置失败');
       }
 
-      const updateRes = await this.NoteModel.updateBlogReviewNotice(param);
-      if (!updateRes) {
-        throw new Error('设置复习状态失败');
-      }
       ctx.body = {
         success: true,
         message: '设置成功',
@@ -37,7 +42,22 @@ class SetReviewThis extends BaseClass {
       };
       return next();
     } catch (e) {
-      this.responseFail(e.message || '设置复习状态失败', errCode.UPDATE_STATE_FAIL);
+      this.responseFail(e.message || '设置失败', errCode.UPDATE_STATE_FAIL);
+      return next();
+    }
+  }
+
+  // 判断该note是否存在
+  async checkNote(next) {
+    const noteArr = await this.NoteModel.getNoteArr(
+      ['id'], {
+        note_id: this.param.note_id,
+        uid: this.uid,
+        state: 1,
+      },
+    );
+    if (!noteArr || noteArr.length !== 1) {
+      this.responseFail('该note不唯一或不存在', 3);
       return next();
     }
   }

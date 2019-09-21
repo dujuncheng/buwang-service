@@ -41,7 +41,7 @@ class BaseModel {
    * @param join AND
    * @returns {string}
    */
-  objToString(obj, join) {
+  objToString(obj, join = 'AND') {
     let result = '';
     if (obj && Object.keys(obj).length > 0) {
       const keys = Object.keys(obj);

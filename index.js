@@ -1,30 +1,27 @@
-const Koa                   = require('koa');
-const bodyParser            = require('koa-body');
-const Router                = require('koa-router');
-const cors                  = require('koa2-cors');
+const Koa = require('koa');
+const bodyParser = require('koa-body');
+const Router = require('koa-router');
+const cors = require('koa2-cors');
 
 // node原生不支持
-const mysql                 = require('./common/mysql.js');
-const redis                 = require('./common/redis.js');
-const route                 = require('./route/index.js');
+const mysql = require('./common/mysql.js');
+const redis = require('./common/redis.js');
+const route = require('./route/index.js');
 
-async function serverinit () {
+async function serverinit() {
+  mysql.init();
+  redis.init();
+  const app = new Koa();
 
+  app.use(bodyParser());
+  app.use(cors({ credentials: true }));
+  const router = new Router();
+  router.all('/notebook', route);
 
-    mysql.init();
-	redis.init();
-    const app = new Koa();
+  app.use(router.routes()).use(router.allowedMethods());
 
-    app.use(bodyParser());
-    app.use(cors({credentials: true}));
-    var router = new Router();
-    router.all('/notebook', route);
-
-    app.use(router.routes()).use(router.allowedMethods());
-
-    app.listen(84);
+  app.listen(84);
 }
 
 
 serverinit();
-

@@ -59,12 +59,13 @@ class BaseClass {
 	 */
   async checkHasOneNote(noteId, uid) {
     // 判断该note是否存在
-    const noteArr = await this.NoteModel.getNoteArr({
-      note_id: noteId,
-      uid,
-      state: 1,
-      publish: 1,
-    });
+    const noteArr = await this.NoteModel.getNoteArr(
+      ['id'], {
+        note_id: noteId,
+        uid,
+        state: 1,
+      },
+    );
 
     if (!noteArr || noteArr.length !== 1) {
       return false;
