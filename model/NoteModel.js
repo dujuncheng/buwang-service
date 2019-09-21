@@ -278,6 +278,27 @@ class NoteModel extends BaseModel{
             });
         return res;
     }
+    
+    /**
+     * 获取全部的笔记
+     */
+    async getAll(fields) {
+        let fieldsStr = ''
+        if (!fields) {
+            fieldsStr = '*'
+        } else if (Array.isArray(fields)) {
+            fieldsStr = fields.join(',')
+        } else  {
+            fieldsStr = '*'
+        }
+        let sql = `SELECT ${fieldsStr} FROM note_table`;
+        
+        let res = await mysql.runSql(sql, dbConf.dbName)
+        .catch((err) => {
+            console.log(err);
+        });
+        return res;
+    }
 
     /**
      * 修改复习数据
