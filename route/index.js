@@ -14,6 +14,7 @@ const SetReviewThis = require('../handler/SetReviewThis.js');
 const Register = require('../handler/Register.js');
 const Login = require('../handler/Login.js');
 const GetContent = require('../handler/GetContent.js');
+const SetPublish = require('../handler/SetPublish.js');
 
 const map = {
   add_note: addNewNote,
@@ -29,6 +30,7 @@ const map = {
   remove_catalog: RemoveCatalog,
   set_review: SetReviewThis,
   set_frequency: SetFrequency,
+  set_publish: SetPublish,
   register: Register,
   login: Login,
   get_content: GetContent,
@@ -37,7 +39,7 @@ const map = {
 const route = async (ctx, next) => {
   const method = ctx.request.query.method || ctx.request.body.method;
 
-  if (Map[method]) {
+  if (map[method]) {
     return await (new map[method]()).handler(ctx, next);
   }
 };

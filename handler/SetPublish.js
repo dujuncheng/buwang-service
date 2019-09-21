@@ -8,7 +8,6 @@ class SetReviewThis extends BaseClass {
 
   async run(ctx, next) {
     try {
-      debugger;
       // type 1 是设置为公开博客状态 ， type 0 是取消公开为博客
       const paramOk = this.checkParams(['note_id', 'type']);
 
@@ -21,7 +20,9 @@ class SetReviewThis extends BaseClass {
         throw new Error('参数数据格式不正确');
       }
 
-      await this.checkNote();
+      if (!await this.checkNote()) {
+        return next();
+      }
 
       const set = {
         publish: this.param.type === 1 ? 1 : 0,
@@ -48,18 +49,19 @@ class SetReviewThis extends BaseClass {
   }
 
   // 判断该note是否存在
-  async checkNote(next) {
+  async checkNote() {
     const noteArr = await this.NoteModel.getNoteArr(
       ['id'], {
         note_id: this.param.note_id,
-        uid: this.uid,
+        user_id: this.uid,
         state: 1,
       },
     );
     if (!noteArr || noteArr.length !== 1) {
       this.responseFail('该note不唯一或不存在', 3);
-      return next();
+      return false;
     }
+    return true;
   }
 }
 
