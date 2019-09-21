@@ -2,6 +2,7 @@
 	"extends": "airbnb-base",
 	"rules": {
 		"no-tabs": "off",
-		"no-mixed-spaces-and-tabs": "off"
+		"no-mixed-spaces-and-tabs": "off",
+		"class-methods-use-this": "off"
 	}
 }

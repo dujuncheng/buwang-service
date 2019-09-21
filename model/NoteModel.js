@@ -247,11 +247,7 @@ class NoteModel extends BaseModel {
    * @param where { note_id: 1, uid}
    * @returns {Promise<T>}
    */
-  async getNoteArr(where) {
-    if (_.isUndefined(note_id)) {
-      throw new Error('读取数据库参数缺失');
-      return;
-    }
+  async getNoteArr(field, where) {
     let whereStr = '';
     if (where && Object.keys(where).length > 0) {
       const keys = Object.keys(where);
@@ -266,7 +262,7 @@ class NoteModel extends BaseModel {
       whereStr = '';
     }
 
-    const sql = `SELECT * FROM note_table WHERE note_id = '${note_id}' AND state = 1`;
+    const sql = `SELECT * FROM note_table ${whereStr}`;
 
     const res = await mysql.runSql(sql, dbConf.dbName)
       .catch((err) => {

@@ -2,7 +2,7 @@ const _ = require('underscore');
 const NoteModel = require('../model/NoteModel.js');
 const CatalogModel = require('../model/catalogModel.js');
 const UserModel = require('../model/UserModel.js');
-const errCode = require('../config/errCode');
+const ErrCode = require('../config/errCode');
 const CONST = require('../common/const.js');
 const getSession = require('../library/session.js');
 
@@ -63,6 +63,7 @@ class BaseClass {
       note_id: noteId,
       uid,
       state: 1,
+      publish: 1,
     });
 
     if (!noteArr || noteArr.length !== 1) {
@@ -91,7 +92,7 @@ class BaseClass {
     }
 
     if (result === false) {
-      this.responseFail('参数缺失', errCode.NOT_VALID_PARAM);
+      this.responseFail('参数缺失', ErrCode.NOT_VALID_PARAM);
     }
     return result;
   }
@@ -172,19 +173,6 @@ class BaseClass {
     const now = Math.floor(Date.now() / 1000);
     const reviewTime = now + nextReviewSecond;
     return reviewTime;
-  }
-
-  /**
-	 * 设置失败的时候返回值
-	 * @param message
-	 * @param errCode
-	 */
-  responseFail(message, errCode) {
-    this.ctx.body = {
-      success: false,
-      err_code: errCode || 0,
-      message: message || '操作失败',
-    };
   }
 
   /*

@@ -34,6 +34,29 @@ class BaseModel {
     }
     return str;
   }
+
+  /**
+   * 把对象变成 'note_id = 1 AND id = 0'
+   * @param obj  { note_id: 1, id: 0 }
+   * @param join AND
+   * @returns {string}
+   */
+  objToString(obj, join) {
+    let result = '';
+    if (obj && Object.keys(obj).length > 0) {
+      const keys = Object.keys(obj);
+      const tmp = [];
+      for (let i = 0; i < keys.length; i++) {
+        if (keys[i] && obj[keys[i]]) {
+          tmp.push(`${keys[i]} = ${obj[keys[i]]}`);
+        }
+      }
+      result = `${tmp.join(join)}`;
+    } else {
+      result = '';
+    }
+    return result;
+  }
 }
 
 
