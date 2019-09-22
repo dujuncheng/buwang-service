@@ -104,6 +104,7 @@ class NoteModel extends BaseModel {
     return result;
   }
 
+
   /**
 	 * 根据 @noteId 和 @uid 找出 state ==1 的笔记
 	 * @param noteId
@@ -248,12 +249,17 @@ class NoteModel extends BaseModel {
    * @param where { note_id: 1, uid}
    * @returns {Promise<T>}
    */
-  async getNoteArr(field, where) {
+  async getNoteArr(field, where, pageNum, pageSize) {
     const whereStr = this.objToString(where);
     const fieldStr = this.arrToString(field);
 
-    const sql = `SELECT ${fieldStr} FROM note_table ${whereStr ? `WHERE${whereStr}` : ''}`;
+    let sql = `SELECT ${fieldStr} FROM note_table ${whereStr ? `WHERE${whereStr}` : ''} `;
 
+    // 如果传入分页
+    if (pageNum !== undefined && pageSize !== undefined) {
+      const start = pageNum - 1 < 0 ? 0 : pageNum - 1;
+      sql += `LIMIT ${start * pageSize}, ${pageSize}`;
+    }
     const res = await mysql.runSql(sql, dbConf.dbName)
       .catch((err) => {
         console.log(err);

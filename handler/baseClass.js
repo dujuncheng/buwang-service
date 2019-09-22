@@ -8,7 +8,7 @@ const getSession = require('../library/session.js');
 
 
 class BaseClass {
-  constructor(needLogin = true) {
+  constructor({ needLogin = true } = {}) {
     this.ctx = '';
     this.param = {};
     this.NoteModel = NoteModel.instance();

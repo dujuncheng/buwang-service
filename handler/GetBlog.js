@@ -1,8 +1,9 @@
+const base64 = require('js-base64');
 const BaseClass = require('./baseClass.js');
 
-class GetContent extends BaseClass {
+class GetBlog extends BaseClass {
   constructor() {
-    super();
+    super({ needLogin: false });
   }
 
   async run(ctx, next) {
@@ -11,14 +12,19 @@ class GetContent extends BaseClass {
 
       if (!paramOk) {
         throw new Error('参数不正确');
-        return next();
       }
 
-      if (typeof this.param.note_id !== 'number') {
-        throw new Error('参数不正确');
-        return next();
-      }
-      const noteList = await this.NoteModel.getContent(this.param.note_id, this.uid);
+      // if (typeof base64.decode(this.param.note_id) !== 'number') {
+      //   throw new Error('参数不正确');
+      // }
+
+	    const field = ['content', 'user_id', 'title', 'gmt_create', 'gmt_modify'];
+      const where = {
+      	note_id: this.param.note_id,
+	      state: 1,
+	      publish: 1,
+      };
+      const noteList = await this.NoteModel.getNoteArr(field, where);
 
       if (noteList && noteList[0]) {
         ctx.body = {
@@ -39,4 +45,4 @@ class GetContent extends BaseClass {
 }
 
 
-module.exports = GetContent;
+module.exports = GetBlog;

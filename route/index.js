@@ -14,6 +14,8 @@ const SetReviewThis = require('../handler/SetReviewThis.js');
 const Register = require('../handler/Register.js');
 const Login = require('../handler/Login.js');
 const GetContent = require('../handler/GetContent.js');
+const GetBlog = require('../handler/GetBlog.js');
+const GetUserBlog = require('../handler/GetUserBlog.js');
 const SetPublish = require('../handler/SetPublish.js');
 
 const map = {
@@ -34,6 +36,8 @@ const map = {
   register: Register,
   login: Login,
   get_content: GetContent,
+  get_blog: GetBlog,
+  get_user_blog: GetUserBlog,
 };
 
 const route = async (ctx, next) => {
