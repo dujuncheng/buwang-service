@@ -25,12 +25,17 @@ class GetBlog extends BaseClass {
 	      publish: 1,
       };
       const noteList = await this.NoteModel.getNoteArr(field, where);
+      const noteInfo = noteList && noteList[0] ? noteList && noteList[0] : '';
+
+      const userList = await this.UserModel.getUserArr(['nickname'], { id: noteInfo.user_id });
+      const userInfo = userList && userList[0] ? userList && userList[0] : '';
 
       if (noteList && noteList[0]) {
         ctx.body = {
           success: true,
           data: {
-            content: noteList[0],
+            content: noteInfo,
+	          user_info: userInfo,
           },
         };
       } else {
@@ -41,6 +46,10 @@ class GetBlog extends BaseClass {
       this.responseFail(e.message || '请求失败', 0);
       return next();
     }
+  }
+
+  getUserInfo() {
+
   }
 }
 

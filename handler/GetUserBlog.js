@@ -26,11 +26,15 @@ class GetUserBlog extends BaseClass {
       };
       const noteList = await this.NoteModel.getNoteArr(field, where, this.param.page, this.param.page_size);
 
+	    const userList = await this.UserModel.getUserArr(['nickname'], { id: this.param.user_id });
+	    const userInfo = userList && userList[0] ? userList && userList[0] : '';
+
       if (noteList) {
         ctx.body = {
           success: true,
           data: {
             note_list: noteList,
+	          user_info: userInfo,
           },
         };
       } else {
