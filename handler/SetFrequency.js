@@ -18,20 +18,18 @@ class SetFrequency extends BaseClass {
                 || typeof this.param.frequency !== 'number'
       ) {
         throw new Error('参数数据格式不正确');
-        return next();
       }
       // 判断该BLOG是否存在
-	        const result = await this.checkHasOneNote(this.param.note_id, this.uid);
-	        if (!result) {
-		        this.responseFail('该note不唯一或不存在', 3);
-		        return next();
-	        }
+      const result = await this.checkHasOneNote(this.param.note_id, this.uid);
+      if (!result) {
+        this.responseFail('该note不唯一或不存在', 3);
+        return next();
+      }
 
       // 判断改笔记的复习状态
       const note = result[0];
       if (note.need_review === 0) {
         throw new Error('该笔记现在还不是待复习状态呢');
-        return;
       }
       const { frequency } = this.param;
       const { note_id } = this.param;

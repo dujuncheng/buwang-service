@@ -18,14 +18,13 @@ class SetReviewThis extends BaseClass {
                 || typeof this.param.type !== 'number'
       ) {
         throw new Error('参数数据格式不正确');
-        return;
       }
       // 判断该BLOG是否存在
-	        const result = await this.checkHasOneNote(this.param.note_id, this.uid);
-	        if (!result) {
-		        this.responseFail('该note不唯一或不存在', 3);
-		        return next();
-	        }
+      const result = await this.checkHasOneNote(this.param.note_id, this.uid);
+      if (!result) {
+        this.responseFail('该note不唯一或不存在', 3);
+        return next();
+      }
 
 
       // 是否需要复习

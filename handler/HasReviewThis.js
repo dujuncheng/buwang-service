@@ -15,17 +15,19 @@ class HasReviewThis extends BaseClass {
       }
       if (typeof this.param.note_id !== 'number') {
         throw new Error('参数数据格式不正确');
-        return;
       }
       // 判断该BLOG是否存在
-	        const result = await this.checkHasOneNote(this.param.note_id, this.uid);
-	        if (!result) {
-		        this.responseFail('该note不唯一或不存在', 3);
-		        return next();
-	        }
+      const noteArr = await this.NoteModel.getNoteArr(['review_num', 'frequency', 'id'], {
+        user_id: this.uid,
+        note_id: this.param.note_id,
+      });
+      if (!noteArr && !noteArr[0]) {
+        this.responseFail('该note不存在', 3);
+        return next();
+      }
 
-      const reviewNum = Number(result[0].review_num) + 1;
-      const frequency = Number(result[0].frequency);
+      const reviewNum = Number(noteArr[0].review_num) + 1;
+      const frequency = Number(noteArr[0].frequency);
       const needReview = 1;
       const nextNotifyTime = this.getNextReviewTime(reviewNum, frequency);
 
