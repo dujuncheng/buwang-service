@@ -22,30 +22,28 @@ class AddNewNote extends BaseClass {
                 || typeof this.param.note_id !== 'number'
       ) {
         throw new Error('参数格式不对');
-        return;
       }
 
       this.param.title = this.getRequestParam('title');
       this.param.content = this.getRequestParam('content');
 
       // 确保这个note之前是没有的
-	        const result = await this.checkHasOneNote(this.param.note_id, this.uid);
-	        if (result) {
-		        this.responseFail('该note不唯一或不存在', 3);
-		        return next();
-	        }
+      const result = await this.checkHasOneNote(this.param.note_id, this.uid);
+      if (result) {
+        this.responseFail('该note不唯一或不存在', 3);
+        return next();
+      }
 
       const catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, this.uid);
       if (catalogArr.length !== 1) {
         throw new Error('目录不唯一，或者不存在');
-        return;
       }
 
       const nextNotifyTime = this.getNextReviewTime(0);
 
       const res = await this.NoteModel.addNewNote(
         this.param.note_id,
-	            this.uid,
+	      this.uid,
         this.param.catalog_id,
         this.param.title,
         this.param.content,

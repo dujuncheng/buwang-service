@@ -27,7 +27,7 @@ class GetReviewList extends BaseClass {
 
         noteArr = await this.NoteModel.getReviewList(this.uid, limit, offset);
       } else {
-        noteArr = await this.NoteModel.getReviewList(this.uid, ['id']);
+        noteArr = await this.NoteModel.getReviewList(this.uid);
       }
 
       const waitArr = await this.NoteModel.getWaitNum(this.uid, ['id']);
