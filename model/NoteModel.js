@@ -410,7 +410,7 @@ class NoteModel extends BaseModel {
     	const fieldStr = this.arrToString(field);
 
     	let sql = '';
-    	if (!limit) {
+    	if (limit === false) {
 		    sql = `SELECT ${fieldStr}
 	        FROM note_table
 	        WHERE state = 1

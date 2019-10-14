@@ -2,7 +2,6 @@ const mysql = require('mysql');
 const config = require('../../config.js');
 
 let pool = '';
-console.log(config.nanaDbPass);
 const init = async () => {
   await new Promise((resolve) => {
     pool = mysql.createPool({
