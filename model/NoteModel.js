@@ -442,7 +442,7 @@ class NoteModel extends BaseModel {
   }
 
   // 获取待复习的num
-  async getReviewNum(uid, field) {
+  async getWaitNum(uid, field) {
     if (uid === undefined) {
       return false;
     }
@@ -454,6 +454,31 @@ class NoteModel extends BaseModel {
 	        AND need_review = 1
 	        AND user_id = ${uid}
 	        AND notify_time < ${now}
+	        ORDER BY
+	        notify_time ASC,
+	        id ASC
+	        `;
+
+    const res = await mysql.runSql(sql, dbConf.dbName)
+      .catch((err) => {
+        console.log(err);
+      });
+    return res;
+  }
+
+  // 获取已复习的num
+  async getDoneNum(uid, field) {
+    if (uid === undefined) {
+      return false;
+    }
+    const fieldStr = this.arrToString(field);
+    const now = Math.round(new Date().getTime() / 1000);
+    const sql = `SELECT ${fieldStr}
+	        FROM note_table
+	        WHERE state = 1
+	        AND need_review = 1
+	        AND user_id = ${uid}
+	        AND notify_time > ${now}
 	        ORDER BY
 	        notify_time ASC,
 	        id ASC

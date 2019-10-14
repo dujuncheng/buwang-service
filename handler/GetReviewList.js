@@ -16,6 +16,7 @@ class GetReviewList extends BaseClass {
 
       let noteArr = [];
       let waitNum = 0;
+      let doneNum = 0;
 
       if (this.param.need_page) {
         const page = Number(this.param.page);
@@ -29,9 +30,14 @@ class GetReviewList extends BaseClass {
         noteArr = await this.NoteModel.getReviewList(this.uid, ['id']);
       }
 
-      const waitArr = await this.NoteModel.getReviewNum(this.uid, ['id']);
+      const waitArr = await this.NoteModel.getWaitNum(this.uid, ['id']);
       if (waitArr && waitArr.length !== undefined) {
         waitNum = waitArr.length;
+      }
+
+      const doneArr = await this.NoteModel.getDoneNum(this.uid, ['id']);
+      if (doneArr && doneArr.length !== undefined) {
+        doneNum = doneArr.length;
       }
       if (!noteArr || !Array.isArray(noteArr)) {
         throw new Error('查询noteArr失败');
@@ -40,6 +46,7 @@ class GetReviewList extends BaseClass {
         success: true,
         review_list: noteArr,
         wait_num: waitNum,
+        done_num: doneNum,
       };
       return next();
     } catch (e) {
