@@ -32,8 +32,7 @@ class ChangeNote extends BaseClass {
       }
 
       if (!Array.isArray(this.param.change_arr)) {
-	            throw new Error('参数格式不正确');
-        return;
+	      throw new Error('参数格式不正确');
       }
 
       const changeArr = this.param.change_arr;
@@ -42,15 +41,13 @@ class ChangeNote extends BaseClass {
 
       for (let i = 0; i < changeArr.length; i++) {
         const { note_id } = changeArr[i];
-        if (!note_id) {
-	                throw new Error('参数格式不正确');
-                	return;
+        if (note_id) {
+          noteIds.push(note_id);
+          obj[note_id] = {
+            title: changeArr[i].title,
+            content: changeArr[i].content,
+          };
         }
-        noteIds.push(note_id);
-        obj[note_id] = {
-          title: changeArr[i].title,
-          content: changeArr[i].content,
-        };
       }
 
       // 判断该BLOG是否存在
@@ -59,7 +56,6 @@ class ChangeNote extends BaseClass {
                 || arr.length !== changeArr.length
       ) {
         throw new Error('您修改的内容中，有的在数据库中找不到');
-        return;
       }
 
       const updateRes = await this.NoteModel.updateNoteContent(noteIds, obj);
@@ -78,8 +74,5 @@ class ChangeNote extends BaseClass {
     }
   }
 }
-
-
-// export { ChangeOldBlog }
 
 module.exports = ChangeNote;
