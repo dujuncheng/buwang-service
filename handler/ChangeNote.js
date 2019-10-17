@@ -29,6 +29,7 @@ class ChangeNote extends BaseClass {
 
       for (let i = 0; i < changeArr.length; i++) {
         const { note_id } = changeArr[i];
+        console.log(note_id);
         if (note_id && Number(note_id) > 0) {
           noteIds.push(note_id);
           obj[note_id] = {
