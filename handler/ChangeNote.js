@@ -29,7 +29,6 @@ class ChangeNote extends BaseClass {
 
       for (let i = 0; i < changeArr.length; i++) {
         const { note_id } = changeArr[i];
-        console.log(note_id);
         if (note_id && Number(note_id) > 0) {
           noteIds.push(note_id);
           obj[note_id] = {
@@ -41,9 +40,7 @@ class ChangeNote extends BaseClass {
 
       // 判断该BLOG是否存在
       const arr = await this.NoteModel.getArrByNoteIds(noteIds, this.uid);
-      if (arr.length !== noteIds.length
-                || arr.length !== changeArr.length
-      ) {
+      if (!arr || arr.length === 0) {
         throw new Error('您修改的内容中，有的在数据库中找不到');
       }
 
