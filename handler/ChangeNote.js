@@ -12,18 +12,6 @@ class ChangeNote extends BaseClass {
     super();
   }
 
-  decodeContent(content) {
-    // 解析出content
-    let decodeContent = '';
-    try {
-      decodeContent = base64.Base64.decode(content);
-    } catch (e) {
-      console.log(e);
-      this.responseFail('decode失败', errCode.CONTENT_DECODE_FAIL);
-      return next();
-    }
-  }
-
   async run(ctx, next) {
     const paramOk = this.checkParams(['change_arr']);
     try {
@@ -41,7 +29,7 @@ class ChangeNote extends BaseClass {
 
       for (let i = 0; i < changeArr.length; i++) {
         const { note_id } = changeArr[i];
-        if (note_id) {
+        if (note_id && Number(note_id) > 0) {
           noteIds.push(note_id);
           obj[note_id] = {
             title: changeArr[i].title,
