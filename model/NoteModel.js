@@ -417,7 +417,7 @@ class NoteModel extends BaseModel {
 	        AND need_review = 1
 	        AND user_id = ${uid}
 	        ORDER BY
-	        notify_time ASC,
+	        gmt_create DESC,
 	        id ASC
 	        `;
 	    } else {
@@ -427,7 +427,7 @@ class NoteModel extends BaseModel {
 	        AND need_review = 1
 	        AND user_id = ${uid}
 	        ORDER BY
-	        notify_time ASC,
+	        gmt_create DESC,
 	        id ASC
 	        LIMIT ${limit}
 	        OFFSET ${offset}
