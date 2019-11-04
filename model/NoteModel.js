@@ -408,7 +408,7 @@ class NoteModel extends BaseModel {
     		return false;
 	    }
     	const fieldStr = this.arrToString(field);
-
+    	const now = Math.floor(new Date().getTime() / 1000);
     	let sql = '';
     	if (limit === false) {
 		    sql = `SELECT ${fieldStr}
@@ -416,6 +416,7 @@ class NoteModel extends BaseModel {
 	        WHERE state = 1
 	        AND need_review = 1
 	        AND user_id = ${uid}
+	        AND notify_time < ${now}
 	        ORDER BY
 	        gmt_create DESC,
 	        id ASC
@@ -426,6 +427,7 @@ class NoteModel extends BaseModel {
 	        WHERE state = 1
 	        AND need_review = 1
 	        AND user_id = ${uid}
+	        AND notify_time < ${now}
 	        ORDER BY
 	        gmt_create DESC,
 	        id ASC
