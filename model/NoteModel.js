@@ -213,35 +213,7 @@ class NoteModel extends BaseModel {
 
     return result;
   }
-
-
-  /**
-     * 根据catalog_id 来查找数据
-     * @param catalog_id
-     * @returns {Promise<T>}
-     */
-  async getArrByCatalogId(catalog_id, user_id) {
-    if (_.isUndefined(catalog_id) || _.isUndefined(user_id)) {
-      throw new Error('读取数据库参数缺失');
-      return;
-    }
-    const sql = `SELECT * FROM note_table WHERE
-        catalog_id = '${catalog_id}'
-        AND
-        user_id = ${user_id}
-        AND
-        state = 1
-        ORDER BY id DESC
-        `;
-
-    const res = await mysql.runSql(sql, dbConf.dbName)
-      .catch((err) => {
-        console.log(err);
-      });
-    return res;
-  }
-
-
+  
   /**
    *
    * @param note_id 要查询的笔记id

@@ -1,8 +1,3 @@
-const base64 = require('js-base64');
-
-// import {errCode} from "../config/errCode";
-// import {BaseClass} from './baseClass.js'
-
 const BaseClass = require('./baseClass.js');
 
 class GetNoteList extends BaseClass {
@@ -24,7 +19,12 @@ class GetNoteList extends BaseClass {
         return next();
       }
 
-      const noteList = await this.NoteModel.getArrByCatalogId(this.param.catalog_id, this.uid);
+      const noteList = await this.NoteModel.getNoteArr(['id', 'note_id', 'title', 'content', 'need_review', 'notify_time', 'frequency', 'review_num'], {
+        catalog_id: this.param.catalog_id,
+        note_id: this.param.note_id,
+        user_id: this.uid,
+        state: this.state,
+      });
       if (noteList) {
         ctx.body = {
           success: true,
@@ -39,8 +39,5 @@ class GetNoteList extends BaseClass {
     }
   }
 }
-
-
-// export { ChangeOldBlog }
 
 module.exports = GetNoteList;
