@@ -1,3 +1,6 @@
+'use strict';
+const easyMonitor = require('easy-monitor');
+easyMonitor('nana-server');
 const Koa = require('koa');
 const bodyParser = require('koa-body');
 const Router = require('koa-router');

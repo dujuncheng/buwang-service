@@ -30,6 +30,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "ioredis": "^4.10.0",
-    "pandora": "1.10.6"
+    "pandora": "1.10.6",
+    "easy-monitor": "2.0.0"
   }
 }
