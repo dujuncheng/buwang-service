@@ -12,8 +12,11 @@ class GetCatalog extends BaseClass {
 
   async run(ctx, next) {
     try {
+      this.log(1)
       const catalogArr = await this.CatalogModel.getArrByUid(this.uid);
+      this.log(2)
       const catalogTree = await this.makeCatalogTree(catalogArr);
+      this.log(3)
       ctx.body = {
         success: true,
         message: '',
@@ -42,12 +45,16 @@ class GetCatalog extends BaseClass {
       if (arr[i].parent_id === 0) {
         const obj = arr.splice(i, 1)[0];
         obj.label = obj.name;
+        this.log(4)
         obj.note_num = await this.getNoteNum(obj.catalog_id);
+        this.log(5)
         result.push(obj);
       }
     }
     for (let i = 0; i < result.length; i++) {
+      this.log(6)
       result[i].children = await this.findChild(result[i].catalog_id, arr);
+      this.log(7)
     }
     return result;
   }
