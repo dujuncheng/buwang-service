@@ -23,7 +23,7 @@ class GetNoteList extends BaseClass {
         catalog_id: this.param.catalog_id,
         note_id: this.param.note_id,
         user_id: this.uid,
-        state: this.state,
+        state: 1,
       });
       if (noteList) {
         ctx.body = {

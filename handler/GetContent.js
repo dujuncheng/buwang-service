@@ -18,11 +18,11 @@ class GetContent extends BaseClass {
         throw new Error('参数不正确');
         return next();
       }
-      
-      let noteList = await this.NoteModel.getNoteArr(['id', 'note_id', 'title', 'content', 'need_review', 'notify_time', 'frequency', 'review_num'], {
+
+      const noteList = await this.NoteModel.getNoteArr(['id', 'note_id', 'title', 'content', 'need_review', 'notify_time', 'frequency', 'review_num'], {
         note_id: this.param.note_id,
         user_id: this.uid,
-        state: this.state,
+        state: 1,
       });
 
       if (noteList && noteList[0]) {

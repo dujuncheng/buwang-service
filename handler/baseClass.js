@@ -72,8 +72,6 @@ class BaseClass {
         state: 1,
       },
     );
-    console.log(noteId);
-    console.log(noteArr);
 
     if (!noteArr || noteArr.length !== 1) {
       return false;
