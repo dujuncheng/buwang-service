@@ -72,7 +72,7 @@ class BaseClass {
         state: 1,
       },
     );
-    console.log(note_id);
+    console.log(noteId);
     console.log(noteArr);
 
     if (!noteArr || noteArr.length !== 1) {
