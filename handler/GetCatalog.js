@@ -16,7 +16,7 @@ class GetCatalog extends BaseClass {
       this.log(1)
       // 把该用户所有的 catalog 都找出来
       const catalogArr = await this.CatalogModel.getArrByUid(this.uid);
-      this.noteArr = await this.NoteModel.getArrList(['id', 'catalog_id'], {
+      this.noteArr = await this.NoteModel.getNoteArr(['id', 'catalog_id'], {
         user_id: this.uid,
         state: 1
       });
