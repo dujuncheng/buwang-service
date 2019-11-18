@@ -214,13 +214,20 @@ class NoteModel extends BaseModel {
     return result;
   }
 
-  /**
-   *
-   * @param note_id 要查询的笔记id
-   * @param field [id, content]
-   * @param where { note_id: 1, uid}
-   * @returns {Promise<T>}
-   */
+  async getNoteArrOrderBy(field, where, orders) {
+    const whereStr = this.objToString(where);
+    const fieldStr = this.arrToString(field);
+    const orderStr = this.arrToString(orders);
+
+    const sql = `SELECT ${fieldStr} FROM note_table ${whereStr ? `WHERE${whereStr}` : ''} ${orders ? `ORDER BY ${orderStr}` : ''}`;
+
+    const res = await mysql.runSql(sql, dbConf.dbName)
+      .catch((err) => {
+        console.log(err);
+      });
+    return res;
+  }
+
   async getNoteArr(field, where, pageNum, pageSize) {
     const whereStr = this.objToString(where);
     const fieldStr = this.arrToString(field);
@@ -251,27 +258,6 @@ class NoteModel extends BaseModel {
     }
     const str = `(${noteIds.join(',')})`;
     const sql = `SELECT id FROM note_table WHERE note_id IN ${str} AND state = 1 AND user_id = ${uid}`;
-
-    const res = await mysql.runSql(sql, dbConf.dbName)
-      .catch((err) => {
-        console.log(err);
-      });
-    return res;
-  }
-
-  /**
-     * 获取全部的笔记
-     */
-  async getAll(fields) {
-    let fieldsStr = '';
-    if (!fields) {
-      fieldsStr = '*';
-    } else if (Array.isArray(fields)) {
-      fieldsStr = fields.join(',');
-    } else {
-      fieldsStr = '*';
-    }
-    const sql = `SELECT ${fieldsStr} FROM note_table`;
 
     const res = await mysql.runSql(sql, dbConf.dbName)
       .catch((err) => {

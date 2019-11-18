@@ -8,7 +8,7 @@ class SetReviewThis extends BaseClass {
 
   async run(ctx, next) {
     try {
-      this.log(1)
+      this.log(1);
       // type 1 是设置为复习状态 ， type 0 是取消复习状态
       const paramOk = this.checkParams(['note_id', 'type']);
 
@@ -21,9 +21,9 @@ class SetReviewThis extends BaseClass {
         throw new Error('参数数据格式不正确');
       }
       // 判断该BLOG是否存在
-      this.log(2)
+      this.log(2);
       const result = await this.checkHasOneNote(this.param.note_id, this.uid);
-      this.log(3)
+      this.log(3);
       if (!result) {
         this.responseFail('该note不唯一或不存在', 3);
         return next();
@@ -43,9 +43,9 @@ class SetReviewThis extends BaseClass {
       if (needReview) {
         reviewNum = 0;
         frequency = 3;
-        this.log(4)
+        this.log(4);
         nextNotifyTime = this.getNextReviewTime(reviewNum, frequency);
-        this.log(5)
+        this.log(5);
       } else {
         //  从【复习】-> 【不复习】
         reviewNum = 0;
@@ -61,9 +61,9 @@ class SetReviewThis extends BaseClass {
         needReview,
         reviewNum,
       };
-      this.log(6)
+      this.log(6);
       const updateRes = await this.NoteModel.updateBlogReviewNotice(param);
-      this.log(7)
+      this.log(7);
       if (!updateRes) {
         throw new Error('设置复习状态失败');
         return next();

@@ -19,12 +19,15 @@ class GetNoteList extends BaseClass {
         return next();
       }
 
-      const noteList = await this.NoteModel.getNoteArr(['id', 'note_id', 'title', 'content', 'need_review', 'notify_time', 'frequency', 'review_num'], {
+      const noteList = await this.NoteModel.getNoteArrOrderBy(['id', 'note_id', 'title', 'content', 'need_review', 'notify_time', 'frequency', 'review_num'], {
         catalog_id: this.param.catalog_id,
         note_id: this.param.note_id,
         user_id: this.uid,
         state: 1,
-      });
+      }, [
+        'gmt_create DESC',
+        'id ASC',
+      ]);
       if (noteList) {
         ctx.body = {
           success: true,
