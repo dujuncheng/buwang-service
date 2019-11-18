@@ -21,10 +21,10 @@ class BaseClass {
   }
 
   log(event) {
-    let now = new Date();
+    const now = new Date();
     console.log(`${event}: ${now - this.startTime} \n`);
   }
-  
+
   async handler(ctx, next) {
     this.ctx = ctx;
 
@@ -72,6 +72,8 @@ class BaseClass {
         state: 1,
       },
     );
+    console.log(note_id);
+    console.log(noteArr);
 
     if (!noteArr || noteArr.length !== 1) {
       return false;
