@@ -22,7 +22,7 @@ class BaseClass {
 
   log(event) {
     let now = new Date();
-    console.log(`${event}: ${now - this.startTime} \n`);
+    console.log(` ${event}: ${now - this.startTime} \n`);
   }
   
   async handler(ctx, next) {
