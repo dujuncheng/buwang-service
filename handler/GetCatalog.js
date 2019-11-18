@@ -49,7 +49,7 @@ class GetCatalog extends BaseClass {
         const obj = arr.splice(i, 1)[0];
         obj.label = obj.name;
         this.log(4)
-        obj.children = this.findChild(result[i].catalog_id, arr);
+        obj.children = this.findChild(obj.catalog_id, arr);
         obj.note_num = obj.children.length;
         this.log(5)
         result.push(obj);
@@ -65,7 +65,7 @@ class GetCatalog extends BaseClass {
     }
     for (let i = arr.length - 1; i >= 0; i--) {
       if (arr[i] && Number(parent_id) === Number(arr[i].parent_id)) {
-        const obj = arr.splice(i, 1)[0];
+        let obj = arr.splice(i, 1)[0];
         obj.label = obj.name;
         obj.children = this.findChild(obj.catalog_id, arr);
         obj.note_num = obj.children.length;
