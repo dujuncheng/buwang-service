@@ -8,13 +8,18 @@ const BaseClass = require('./baseClass.js');
 class GetCatalog extends BaseClass {
   constructor() {
     super();
+    this.noteArr = [];
   }
 
   async run(ctx, next) {
     try {
       this.log(1)
-      // 把该用户所有的 笔记都找出来
+      // 把该用户所有的 catalog 都找出来
       const catalogArr = await this.CatalogModel.getArrByUid(this.uid);
+      this.noteArr = await this.NoteModel.getArrList(['id', 'catalog_id'], {
+        user_id: this.uid,
+        state: 1
+      });
       this.log(2)
       // 变成树状的json格式
       const catalogTree = await this.makeCatalogTree(catalogArr);
@@ -49,7 +54,7 @@ class GetCatalog extends BaseClass {
         const obj = arr.splice(i, 1)[0];
         obj.label = obj.name;
         this.log(4)
-        obj.children = this.findChild(obj.catalog_id, arr);
+        obj.children = this.findChildCatalog(obj.catalog_id, arr);
         obj.note_num = obj.children.length;
         this.log(5)
         result.push(obj);
@@ -58,21 +63,32 @@ class GetCatalog extends BaseClass {
     return result;
   }
 
-  findChild(parent_id, arr) {
+  findChildCatalog(parentId, arr) {
     const result = [];
     if (arr.length <= 0) {
       return result;
     }
     for (let i = arr.length - 1; i >= 0; i--) {
-      if (arr[i] && Number(parent_id) === Number(arr[i].parent_id)) {
+      if (arr[i] && Number(parentId) === Number(arr[i].parent_id)) {
         let obj = arr.splice(i, 1)[0];
         obj.label = obj.name;
-        obj.children = this.findChild(obj.catalog_id, arr);
-        obj.note_num = obj.children.length;
+        obj.children = this.findChildCatalog(obj.catalog_id, arr);
+        obj.note_num = this.getNoteNum(obj.catalog_id);
         result.push(obj);
       }
     }
     return result;
+  }
+  
+  getNoteNum (catalogId) {
+    let result = [];
+    for (let i = 0; i < this.noteArr.length; i++) {
+      let obj = this.noteArr[i];
+      if (Number(obj.catalog_id) === Number(catalogId)) {
+        result.push(obj);
+      }
+    }
+    return result.length;
   }
 }
 
