@@ -8,7 +8,7 @@ const init = async () => {
       connectionLimit: 30,
       host: config.ip,
       port: config.port,
-      user: 'root',
+      user: config.user,
       password: config.password,
       database: 'notebook',
       charset: 'UTF8MB4_GENERAL_CI',
