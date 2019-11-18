@@ -1,6 +1,6 @@
 const _ = require('underscore');
 const NoteModel = require('../model/NoteModel.js');
-const CatalogModel = require('../model/catalogModel.js');
+const CatalogModel = require('../model/CatalogModel.js');
 const UserModel = require('../model/UserModel.js');
 const ErrCode = require('../config/errCode');
 const CONST = require('../common/const.js');

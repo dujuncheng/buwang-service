@@ -38,7 +38,10 @@ class AddNewNote extends BaseClass {
       }
   
       this.log(4)
-      const catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, this.uid);
+      const catalogArr = await this.CatalogModel.getArrList(['id'], {
+        catalog_id: this.param.catalog_id,
+        user_id: this.uid,
+      });
       this.log(5)
       if (catalogArr.length !== 1) {
         throw new Error('目录不唯一，或者不存在');

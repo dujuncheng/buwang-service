@@ -95,12 +95,33 @@ class CatalogModel extends BaseModel {
     const result = await mysql.bindSql(sql, valueArr, dbConf.dbName);
     return result;
   }
-
+  
   /**
-     *  根据catalog_id找到所有记录
-     * @param catalog_id
-     * @returns {Promise<T>}
-     */
+   * 根据传入的参数，返回对应的数组
+   * @param field
+   * @param where
+   * @param pageNum
+   * @param pageSize
+   * @returns {Promise<T>}
+   */
+  async getArrList(field, where, pageNum, pageSize) {
+    const whereStr = this.objToString(where);
+    const fieldStr = this.arrToString(field);
+    
+    let sql = `SELECT ${fieldStr} FROM catalog_table ${whereStr ? `WHERE${whereStr}` : ''} `;
+    
+    // 如果传入分页
+    if (pageNum !== undefined && pageSize !== undefined) {
+      const start = pageNum - 1 < 0 ? 0 : pageNum - 1;
+      sql += `LIMIT ${start * pageSize}, ${pageSize}`;
+    }
+    const res = await mysql.runSql(sql, dbConf.dbName)
+    .catch((err) => {
+      console.log(err);
+    });
+    return res;
+  }
+  
   async getArrByCatalogId(
     catalog_id,
     user_id,
