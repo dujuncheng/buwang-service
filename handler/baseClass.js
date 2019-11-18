@@ -62,7 +62,7 @@ class BaseClass {
     const noteArr = await this.NoteModel.getNoteArr(
       ['id'], {
         note_id: noteId,
-        uid,
+        user_id: uid,
         state: 1,
       },
     );
