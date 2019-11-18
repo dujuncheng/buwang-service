@@ -6,9 +6,10 @@ const init = async () => {
   await new Promise((resolve) => {
     pool = mysql.createPool({
       connectionLimit: 30,
-      host: 'localhost',
+      host: config.ip,
+      port: config.port,
       user: 'root',
-      password: config.nanaDbPass,
+      password: config.password,
       database: 'notebook',
       charset: 'UTF8MB4_GENERAL_CI',
     });

@@ -24,7 +24,7 @@ class GetReviewList extends BaseClass {
 
         const offset = (page - 1) * pageSize;
         const limit = pageSize;
-        
+
         noteArr = await this.NoteModel.getReviewList(this.uid, limit, offset);
       } else {
         noteArr = await this.NoteModel.getReviewList(this.uid, false, 0);
