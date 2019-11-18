@@ -17,14 +17,9 @@ class BaseClass {
     // 该接口是否需要登录态
     this.needLogin = needLogin;
     this.uid = '';
-    this.startTime = new Date();
+    this.startTime = console.time('')
   }
 
-  log(event) {
-    let now = new Date();
-    console.log(`${this.constructor || ''} ${event}: ${now - this.startTime} \n`);
-  }
-  
   async handler(ctx, next) {
     this.ctx = ctx;
 

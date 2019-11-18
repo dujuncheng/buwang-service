@@ -12,7 +12,6 @@ class AddNewNote extends BaseClass {
 
   async run(ctx, next) {
     try {
-      this.log(1)
       // 检查params
       const paramsOk = this.checkParams(['note_id', 'catalog_id']);
       if (!paramsOk) {
@@ -29,24 +28,19 @@ class AddNewNote extends BaseClass {
       this.param.content = this.getRequestParam('content');
 
       // 确保这个note之前是没有的
-      this.log(2)
       const result = await this.checkHasOneNote(this.param.note_id, this.uid);
-      this.log(3)
       if (result) {
         this.responseFail('该note不唯一或不存在', 3);
         return next();
       }
-  
-      this.log(4)
+
       const catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, this.uid);
-      this.log(5)
       if (catalogArr.length !== 1) {
         throw new Error('目录不唯一，或者不存在');
       }
 
       const nextNotifyTime = this.getNextReviewTime(0);
-  
-      this.log(6)
+
       const res = await this.NoteModel.addNewNote(
         this.param.note_id,
 	      this.uid,
@@ -55,7 +49,6 @@ class AddNewNote extends BaseClass {
         this.param.content,
         nextNotifyTime,
       );
-      this.log(7)
       if (res) {
         ctx.body = {
           success: true,

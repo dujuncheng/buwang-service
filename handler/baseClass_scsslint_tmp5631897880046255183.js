@@ -17,14 +17,8 @@ class BaseClass {
     // 该接口是否需要登录态
     this.needLogin = needLogin;
     this.uid = '';
-    this.startTime = new Date();
   }
 
-  log(event) {
-    let now = new Date();
-    console.log(`${this.constructor || ''} ${event}: ${now - this.startTime} \n`);
-  }
-  
   async handler(ctx, next) {
     this.ctx = ctx;
 
@@ -68,7 +62,7 @@ class BaseClass {
     const noteArr = await this.NoteModel.getNoteArr(
       ['id'], {
         note_id: noteId,
-        user_id: uid,
+        user_id:uid,
         state: 1,
       },
     );

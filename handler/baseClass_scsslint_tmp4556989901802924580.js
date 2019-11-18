@@ -20,9 +20,9 @@ class BaseClass {
     this.startTime = new Date();
   }
 
-  log(event) {
+  log() {
     let now = new Date();
-    console.log(`${this.constructor || ''} ${event}: ${now - this.startTime} \n`);
+    console.log(`${}`);
   }
   
   async handler(ctx, next) {

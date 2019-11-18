@@ -63,7 +63,7 @@ class SetReviewThis extends BaseClass {
       };
       this.log(6)
       const updateRes = await this.NoteModel.updateBlogReviewNotice(param);
-      this.log(7)
+      this.log()
       if (!updateRes) {
         throw new Error('设置复习状态失败');
         return next();

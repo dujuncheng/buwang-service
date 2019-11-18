@@ -37,16 +37,14 @@ class AddNewNote extends BaseClass {
         return next();
       }
   
-      this.log(4)
+      this.log()
       const catalogArr = await this.CatalogModel.getArrByCatalogId(this.param.catalog_id, this.uid);
-      this.log(5)
       if (catalogArr.length !== 1) {
         throw new Error('目录不唯一，或者不存在');
       }
 
       const nextNotifyTime = this.getNextReviewTime(0);
-  
-      this.log(6)
+
       const res = await this.NoteModel.addNewNote(
         this.param.note_id,
 	      this.uid,
@@ -55,7 +53,6 @@ class AddNewNote extends BaseClass {
         this.param.content,
         nextNotifyTime,
       );
-      this.log(7)
       if (res) {
         ctx.body = {
           success: true,
