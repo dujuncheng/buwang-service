@@ -55,7 +55,7 @@ class GetCatalog extends BaseClass {
         obj.label = obj.name;
         this.log(4)
         obj.children = this.findChildCatalog(obj.catalog_id, arr);
-        obj.note_num = obj.children.length;
+        obj.note_num = this.getNoteNum(obj.catalog_id);
         this.log(5)
         result.push(obj);
       }
