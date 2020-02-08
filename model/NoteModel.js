@@ -95,6 +95,7 @@ class NoteModel extends BaseModel {
     valueArr.push(notify_time);
     valueArr.push(0);
     valueArr.push(1);
+    valueArr.push(1);
     valueArr.push(Date.now() / 1000);
     valueArr.push(Date.now() / 1000);
 
