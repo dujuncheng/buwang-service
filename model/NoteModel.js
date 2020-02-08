@@ -85,6 +85,21 @@ class NoteModel extends BaseModel {
 
     const fieldStr = dbConf.noteTableField.join(',');
 
+    //[
+    //     'id',
+    //     'note_id',
+    //     'user_id',
+    //     'catalog_id',
+    //     'title',
+    //     'content',
+    //     'need_review',
+    //     'notify_time',
+    //     'frequency',
+    //     'review_num',
+    //     'state',
+    //     'gmt_create',
+    //     'gmt_modify'
+    //   ]
     const valueArr = [];
     valueArr.push(0);
     valueArr.push(note_id);
@@ -92,15 +107,23 @@ class NoteModel extends BaseModel {
     valueArr.push(catalog_id);
     valueArr.push(title);
     valueArr.push(content);
+    valueArr.push(1);
     valueArr.push(notify_time);
+    valueArr.push(3);
     valueArr.push(0);
     valueArr.push(1);
-    valueArr.push(1);
     valueArr.push(Date.now() / 1000);
     valueArr.push(Date.now() / 1000);
-
-
-    const sql = `INSERT INTO note_table (${fieldStr}) VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
+    
+    let values = ''
+    for (let i = 0; i < valueArr.length; i++) {
+      if ( i === valueArr.length - 1) {
+        values = values + '?'
+      } else {
+        values = values + '?,'
+      }
+    }
+    const sql = `INSERT INTO note_table (${fieldStr}) VALUES (${values})`;
     const result = await mysql.bindSql(sql, valueArr, dbConf.dbName);
     return result;
   }
