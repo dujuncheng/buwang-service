@@ -90,7 +90,8 @@ class Session {
       maxAge: CONST.SESSION_LAST,
       overwrite: true,
       httpOnly: false,
-	    sameSite: 'none'
+	    sameSite: 'none',
+	    secure: true,
     };
     ctx.set('x_session', encode);
     ctx.cookies.set('_x_session', encode, option);
