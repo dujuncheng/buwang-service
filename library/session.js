@@ -89,9 +89,7 @@ class Session {
     const option = {
       maxAge: CONST.SESSION_LAST,
       overwrite: true,
-      httpOnly: false,
-	    sameSite: 'none',
-	    secure: true,
+      httpOnly: false
     };
     ctx.set('x_session', encode);
     ctx.cookies.set('_x_session', encode, option);
