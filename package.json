@@ -15,7 +15,7 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-loader": "^3.0.0",
     "js-base64": "^2.5.1",
-    "koa": "^2.5.3",
+    "koa": "2.13.0",
     "koa-body": "^4.0.4",
     "koa-router": "^7.4.0",
     "koa2-cors": "^2.0.6",
