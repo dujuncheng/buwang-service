@@ -29,7 +29,16 @@ class HasReviewThis extends BaseClass {
       const reviewNum = Number(noteArr[0].review_num) + 1;
       const frequency = Number(noteArr[0].frequency);
       const needReview = 1;
-      const nextNotifyTime = this.getNextReviewTime(reviewNum, frequency);
+      let nextNotifyTime = ''
+      
+      const customReviewTime = this.ctx.request.body['nextReviewTime']
+      
+      if (!customReviewTime) {
+        nextNotifyTime = this.getNextReviewTime(reviewNum, frequency);
+      } else {
+        nextNotifyTime = customReviewTime
+      }
+     
 
       const param = {
         frequency,
